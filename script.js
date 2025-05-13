@@ -64,4 +64,12 @@ const DOC = {
     return e;
   },
 };
-Team.setup();
+const PAGEOPS = {
+  setup: function () {
+    DOC.get("#go").addEventListener("click", this.moveNext);
+  },
+  moveNext: function () {
+    alert("moveNext");
+  },
+};
+PAGEOPS.setup();
