@@ -26,7 +26,7 @@ class Player {
       "col-md-4"
     );
     const content = DOC.create("div");
-    content.textContent = `${this.fname} ${this.lname}`;
+    content.textContent = `${this.fname}, ${this.lname}, Age: ${this.age}, Ally: ${this.ally}`;
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.append(content);
     loc.append(card);
@@ -39,7 +39,7 @@ const Team = {
       .then((result) => result.text())
       .then((data) => {
         data.split(";").forEach((e) => {
-          this.players.push(new Player(...e.split(",")));
+          this.players.push(new Player(...e.split("@")));
         });
         this.players.forEach((p, i) => p.render(DOC.get("#gridRow"), i));
       }) //renders and assigns
