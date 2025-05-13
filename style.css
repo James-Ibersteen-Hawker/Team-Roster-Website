@@ -33,12 +33,6 @@ html {
           box-shadow: 0px 0px 20px var(--blue);
           backdrop-filter: blur(10px);
           opacity: 0;
-          animation-name: gradFade;
-          animation-duration: 2s;
-          animation-timing-function: ease-out;
-          animation-delay: 0.2s;
-          animation-iteration-count: 1;
-          animation-fill-mode: forwards;
           #go {
             user-select: none;
             cursor: pointer;
@@ -71,6 +65,14 @@ html {
             box-shadow: 0px 0px 10px var(--blue), 0px 0px 5px var(--blue);
             transition: 0.2s;
           }
+        }
+        .gradfade {
+          animation-name: gradFade;
+          animation-duration: 2s;
+          animation-timing-function: ease-out;
+          animation-delay: 0.2s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
         }
         .hero-button::after {
           content: "";
@@ -210,9 +212,9 @@ html {
 }
 @keyframes fadeOut {
   from {
-    background: red;
+    opacity: 1;
   }
   to {
-    background: green;
+    opacity: 0;
   }
 }

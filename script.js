@@ -75,6 +75,7 @@ const PAGEOPS = {
   moveNext: function () {
     DOC.get(".hero").classList.remove("pulsing");
     DOC.get(".hero").classList.add("moveNavDown");
+    DOC.get(".hero-button").classList.remove("gradfade");
     DOC.get(".hero-button").classList.add("fadeOut");
   },
 };
