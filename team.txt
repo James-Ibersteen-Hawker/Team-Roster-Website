@@ -1,0 +1,2 @@
+Darth, Vader, N/A, Empire, Sith;
+Luke, Skywalker, 19, Rebellion, Jedi;
