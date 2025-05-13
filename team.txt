@@ -1,2 +1,3 @@
-Darth, Vader, N/A, Empire, Sith;
-Luke, Skywalker, 19, Rebellion, Jedi;
+Darth,Vader,N/A,Empire,Sith,imgs/DarthVader.png,bonus;
+Luke,Skywalker,19,Rebellion,Jedi,imgs/LukeSkywalker.png,bonus;
+Obi-wan,Kenobi,57,Rebellion,Jedi,imgs/ObiwanKenobi,bonus
