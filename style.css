@@ -46,6 +46,8 @@ html {
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
           #go {
+            user-select: none;
+            cursor: pointer;
             width: 100px;
             height: 100px;
             border: 3px solid rgb(255, 106, 0);
@@ -53,7 +55,7 @@ html {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(1);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -64,6 +66,16 @@ html {
             color: var(--blue);
             font-size: 50px;
             font-family: "Solo3D", sans-serif;
+            transition: 0.5s;
+          }
+          #go:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0px 0px 10px var(--blue), 0px 0px 10px var(--blue);
+          }
+          #go:active {
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0px 0px 10px var(--blue), 0px 0px 5px var(--blue);
+            transition: 0.2s;
           }
         }
         .hero-button::after {
@@ -74,6 +86,7 @@ html {
           width: 120%;
           height: 50px;
           transform: translate(-50%, 50%) skew(10deg);
+          filter: contrast(150%);
           background: url(imgs/saberBlue.png);
           background-size: 100% 100%;
           background-repeat: no-repeat;
@@ -85,8 +98,8 @@ html {
           left: 50%;
           width: 120%;
           height: 50px;
-          transform: translate(-50%, -50%) skew(10deg) scaleX(-1);
-          filter: hue-rotate(150deg);
+          transform: translate(-50%, -50%) skew(10deg) scale(-1);
+          filter: hue-rotate(150deg) saturate(120%) contrast(150%);
           background: url(imgs/saberBlue.png);
           background-size: 100% 100%;
           background-repeat: no-repeat;
