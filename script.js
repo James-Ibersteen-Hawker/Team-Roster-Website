@@ -67,9 +67,15 @@ const DOC = {
 const PAGEOPS = {
   setup: function () {
     DOC.get("#go").addEventListener("click", this.moveNext);
+    setTimeout(() => {
+      DOC.get(".hero").classList.add("pulsing");
+      DOC.get(".hero").classList.remove("bgZoom");
+    }, 2000);
   },
   moveNext: function () {
-    alert("moveNext");
+    DOC.get(".hero").classList.remove("pulsing");
+    DOC.get(".hero").classList.add("moveNavDown");
+    DOC.get(".hero-button").classList.add("fadeOut");
   },
 };
 PAGEOPS.setup();

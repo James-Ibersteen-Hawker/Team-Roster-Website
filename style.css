@@ -5,7 +5,6 @@ html {
     --blue: rgb(2, 0, 26);
     width: 100%;
     height: 100%;
-    background: green;
     padding: 0 !important;
     main {
       height: 100%;
@@ -16,12 +15,7 @@ html {
         height: 100%;
         background: url(inCity.jpg);
         background-position: left center;
-        animation-name: bgZoom;
-        animation-duration: 2s;
-        animation-timing-function: ease-out;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-        position: relative;
+        background-repeat: no-repeat;
         .hero-button {
           width: 40%;
           min-width: 300px;
@@ -124,6 +118,21 @@ html {
         animation-fill-mode: forwards;
         z-index: 1;
       }
+      .pulsing {
+        animation-name: bgPulse;
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+      }
+      .bgZoom {
+        animation-name: bgZoom;
+        animation-duration: 2s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        position: relative;
+      }
       #gridRow {
         background-color: yellow;
         display: flex;
@@ -161,5 +170,49 @@ html {
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes bgPulse {
+  0% {
+    background-size: auto 100%;
+  }
+  50% {
+    background-size: auto 101%;
+  }
+  100% {
+    background-size: auto 100%;
+  }
+}
+
+/*utility animation classes*/
+.moveNavDown {
+  animation-name: moveNavDown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  background-size: 100% 100%;
+}
+@keyframes moveNavDown {
+  from {
+    top: 0;
+  }
+  to {
+    top: 80px;
+  }
+}
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+@keyframes fadeOut {
+  from {
+    background: red;
+  }
+  to {
+    background: green;
   }
 }
