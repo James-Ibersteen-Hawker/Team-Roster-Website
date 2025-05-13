@@ -3,19 +3,67 @@ html {
   height: 100%;
   body {
     --blue: rgb(2, 0, 26);
+    --headerHeight: 100px;
+    background: var(--blue);
     width: 100%;
     height: 100%;
     padding: 0 !important;
+    header {
+      height: var(--headerHeight);
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: transparent;
+      background: linear-gradient(to bottom, rgb(255, 208, 0), white);
+      background-clip: text;
+      font-family: "Aero", sans-serif;
+      font-size: 40px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        li {
+          margin: 0 25px;
+        }
+      }
+      .horizRuleRight {
+        height: 1px;
+        width: 100%;
+        border: 0;
+        background: white;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(-50%);
+        mask-image: linear-gradient(
+          to right,
+          white 50%,
+          transparent,
+          transparent
+        );
+        opacity: 1 !important;
+      }
+    }
     main {
       height: 100%;
       width: 100%;
       margin: 0;
+      position: relative;
       .hero {
         width: 100%;
         height: 100%;
         background: url(inCity.jpg);
         background-position: left center;
         background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
         .hero-button {
           width: 40%;
           min-width: 300px;
@@ -152,11 +200,48 @@ html {
         }
       }
     }
+    footer {
+      height: var(--headerHeight);
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: transparent;
+      background: linear-gradient(to top, rgb(255, 208, 0), white);
+      background-clip: text;
+      font-family: "Aero", sans-serif;
+      font-size: 40px;
+      display: flex;
+      justify-content: end;
+      z-index: 3;
+      padding: 25px;
+      .horizRuleLeft {
+        height: 1px;
+        width: 100%;
+        border: 0;
+        background: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateY(50%);
+        mask-image: linear-gradient(
+          to left,
+          white 50%,
+          transparent,
+          transparent
+        );
+        opacity: 1 !important;
+      }
+    }
   }
 }
 @font-face {
   font-family: Solo3D;
   src: url(fonts/soloist3d.ttf);
+}
+@font-face {
+  font-family: Aero;
+  src: url(fonts/Aero.ttf);
 }
 @keyframes bgZoom {
   from {
@@ -189,18 +274,22 @@ html {
 /*utility animation classes*/
 .moveNavDown {
   animation-name: moveNavDown;
-  animation-duration: 1s;
+  animation-duration: 2.5s;
   animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
-  background-size: 100% 100%;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @keyframes moveNavDown {
   from {
     top: 0;
+    height: 100%;
   }
   to {
-    top: 80px;
+    top: var(--headerHeight);
+    height: calc(100% - (var(--headerHeight)) * 2);
   }
 }
 .fadeOut {
@@ -216,5 +305,35 @@ html {
   }
   to {
     opacity: 0;
+  }
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeInNAV {
+  animation-name: fadeInNAV;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+@keyframes fadeInNAV {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -73,10 +73,16 @@ const PAGEOPS = {
     }, 2000);
   },
   moveNext: function () {
-    DOC.get(".hero").classList.remove("pulsing");
-    DOC.get(".hero").classList.add("moveNavDown");
     DOC.get(".hero-button").classList.remove("gradfade");
     DOC.get(".hero-button").classList.add("fadeOut");
+    setTimeout(() => {
+      DOC.get(".hero").classList.remove("pulsing");
+      DOC.get(".hero").classList.add("moveNavDown");
+      DOC.get("header").classList.remove("d-none");
+      DOC.get("header").classList.add("fadeInNAV");
+      DOC.get("footer").classList.remove("d-none");
+      DOC.get("footer").classList.add("fadeInNAV");
+    }, 800);
   },
 };
 PAGEOPS.setup();
