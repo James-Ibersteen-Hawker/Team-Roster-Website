@@ -244,19 +244,31 @@ html {
         }
       }
       #gridRow {
-        background-color: yellow;
         display: flex;
         justify-content: center;
         text-align: center;
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        top: calc(var(--headerHeight) + 100px);
+        padding: 0 20px;
         div[data-name^="c"] {
-          background-color: blue;
           aspect-ratio: 6/5;
           padding: 5px;
           div {
-            background: brown;
+            background: linear-gradient(to bottom, white, rgb(179, 179, 179));
+            border-radius: 10px;
+            border: 5px outset rgb(209, 208, 219);
             height: 100%;
             width: 100%;
           }
+        }
+        .gridControl {
+          width: 100%;
+          height: auto;
+          /* background-color: white; */
+          margin-bottom: 5px;
+          user-select: all;
         }
       }
     }

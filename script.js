@@ -75,11 +75,15 @@ const PAGEOPS = {
       DOC.get(".hero").classList.remove("bgZoom");
       DOC.getALL("header ul li")[0].addEventListener("click", PAGEOPS.home);
       DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
+      DOC.get("#carouselRosterBtn").addEventListener("click", PAGEOPS.roster);
     }, 2000);
   },
   moveNext: function () {
     DOC.get(".hero-button").classList.remove("gradfade");
     DOC.get(".hero-button").classList.add("fadeOut");
+    setTimeout(() => {
+      DOC.get(".hero-button").classList.add("d-none");
+    }, 1000);
     setTimeout(() => {
       DOC.get(".hero").classList.remove("pulsing");
       DOC.get(".hero").classList.add("moveNavDown");
@@ -100,13 +104,18 @@ const PAGEOPS = {
     DOC.get(".hero").classList.add("toRosterNav");
     DOC.get(".hero").classList.remove("moveNavDown");
     DOC.get(".hero").classList.remove("toHomeNav");
-    DOC.get("#gridRow").classList.add("fadeIn");
-    DOC.get("#gridRow").classList.remove("d-none");
     setTimeout(() => {
       DOC.get("#carouselBody").classList.remove("fadeOut");
       DOC.get("#carouselBody").classList.add("d-none");
-      DOC.get("#gridRow").classList.remove("fadeIn");
     }, 1000);
+    setTimeout(() => {
+      DOC.get("#gridRow").classList.add("fadeIn");
+      DOC.get("#gridRow").classList.remove("d-none");
+      Team.setup();
+      setTimeout(() => {
+        DOC.get("#gridRow").classList.remove("fadeIn");
+      }, 1000);
+    }, 2500);
   },
   home: function () {
     DOC.get("#carouselBody").classList.add("fadeIn");
