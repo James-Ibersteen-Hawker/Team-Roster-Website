@@ -29,7 +29,9 @@ html {
         width: 100%;
         display: flex;
         align-items: center;
+        user-select: none;
         li {
+          cursor: pointer;
           margin: 0 25px;
         }
       }
@@ -175,6 +177,7 @@ html {
         justify-content: center;
         flex-direction: column;
         overflow: clip;
+        user-select: none;
         .carousel-header,
         .carousel-footer {
           width: 100%;
@@ -349,6 +352,53 @@ html {
     height: calc(100% - (var(--headerHeight)) * 2);
   }
 }
+.toRosterNav {
+  animation-name: toRosterNav;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@keyframes toRosterNav {
+  from {
+    transform-origin: center;
+    background-position: left center;
+    top: var(--headerHeight);
+    height: calc(100% - (var(--headerHeight)) * 2);
+  }
+  to {
+    transform-origin: center;
+    background-position: center center;
+    top: var(--headerHeight);
+    height: 100px;
+  }
+}
+.toHomeNav {
+  animation-name: toHomeNav;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@keyframes toHomeNav {
+  from {
+    transform-origin: center;
+    background-position: left center;
+    top: var(--headerHeight);
+    height: calc(100% - (var(--headerHeight)) * 2);
+  }
+  to {
+    transform-origin: center;
+    background-position: center center;
+    top: var(--headerHeight);
+    height: 100px;
+  }
+}
 .fadeOut {
   animation-name: fadeOut;
   animation-duration: 1s;
@@ -410,7 +460,4 @@ html {
   border-radius: 20px;
   box-shadow: 0px 0px 20px var(--blue);
   backdrop-filter: blur(10px);
-}
-*[onclick^="DOC.link"] {
-  cursor: pointer;
 }

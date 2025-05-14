@@ -73,6 +73,8 @@ const PAGEOPS = {
     setTimeout(() => {
       DOC.get(".hero").classList.add("pulsing");
       DOC.get(".hero").classList.remove("bgZoom");
+      DOC.getALL("header ul li")[0].addEventListener("click", PAGEOPS.home);
+      DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
     }, 2000);
   },
   moveNext: function () {
@@ -90,6 +92,34 @@ const PAGEOPS = {
       DOC.get("#carouselBody").classList.add("fadeIn");
       CAROUSEL.setup();
     }, 800);
+  },
+  roster: function () {
+    console.log("roster");
+    DOC.get("#carouselBody").classList.add("fadeOut");
+    DOC.get("#carouselBody").classList.remove("fadeIn");
+    DOC.get(".hero").classList.add("toRosterNav");
+    DOC.get(".hero").classList.remove("moveNavDown");
+    DOC.get(".hero").classList.remove("toHomeNav");
+    DOC.get("#gridRow").classList.add("fadeIn");
+    DOC.get("#gridRow").classList.remove("d-none");
+    setTimeout(() => {
+      DOC.get("#carouselBody").classList.remove("fadeOut");
+      DOC.get("#carouselBody").classList.add("d-none");
+      DOC.get("#gridRow").classList.remove("fadeIn");
+    }, 1000);
+  },
+  home: function () {
+    DOC.get("#carouselBody").classList.add("fadeIn");
+    DOC.get("#carouselBody").classList.remove("d-none");
+    DOC.get("#carouselBody").classList.remove("fadeOut");
+    DOC.get(".hero").classList.add("toHomeNav");
+    DOC.get(".hero").classList.remove("toRosterNav");
+    DOC.get("#gridRow").classList.add("fadeOut");
+    setTimeout(() => {
+      DOC.get("#carouselBody").classList.remove("fadeIn");
+      DOC.get("#gridRow").classList.remove("fadeOut");
+      DOC.get("#gridRow").classList.add("d-none");
+    }, 1000);
   },
 };
 const CAROUSEL = {
@@ -113,6 +143,9 @@ const CAROUSEL = {
         setInterval(
           () => {
             let num = Math.floor(Math.random() * this.text.length);
+            while (num == this.index)
+              num = Math.floor(Math.random() * this.text.length);
+            this.index = num;
             [mH, lH].forEach((e) => e.classList.add("fadeOut"));
             this.index = num;
             setTimeout(() => {
