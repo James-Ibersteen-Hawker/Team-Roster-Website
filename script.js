@@ -78,11 +78,33 @@ const PAGEOPS = {
     setTimeout(() => {
       DOC.get(".hero").classList.remove("pulsing");
       DOC.get(".hero").classList.add("moveNavDown");
-      DOC.get("header").classList.remove("d-none");
-      DOC.get("header").classList.add("fadeInNAV");
-      DOC.get("footer").classList.remove("d-none");
-      DOC.get("footer").classList.add("fadeInNAV");
+      [DOC.get("header"), DOC.get("footer"), DOC.get("#carouselBody")].forEach(
+        (e) => e.classList.remove("d-none")
+      );
+      [DOC.get("header"), DOC.get("footer")].forEach((e) =>
+        e.classList.add("fadeInNAV")
+      );
+      DOC.get("#carouselBody").classList.add("fadeIn");
+      CAROUSEL.setup();
     }, 800);
+  },
+};
+const CAROUSEL = {
+  text: [],
+  e: DOC.get("#carouselBody .text"),
+  setText: function () {
+    fetch("quotes.txt")
+      .then((response) => response.text())
+      .then((data) => {
+        data.split("@").forEach((e) => {
+          this.text.push(e.split(":"));
+        });
+        this.e.textContent = this.text;
+      })
+      .catch((error) => console.error(error));
+  },
+  setup: function () {
+    this.setText();
   },
 };
 PAGEOPS.setup();
