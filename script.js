@@ -23,7 +23,8 @@ class Player {
       `${this.ally[0]}`,
       "col-12",
       "col-sm-6",
-      "col-md-4"
+      "col-md-4",
+      "col-lg-3"
     );
     const content = DOC.create("div");
     content.textContent = `${this.fname}, ${this.lname}, Age: ${this.age}, Ally: ${this.ally}`;
@@ -41,8 +42,11 @@ const Team = {
         data.split(";").forEach((e) => {
           this.players.push(new Player(...e.split("@")));
         });
+        let temp = DOC.get(".gridControl");
+        DOC.get("#gridRow").innerHTML = "";
+        DOC.get("#gridRow").append(temp);
         this.players.forEach((p, i) => p.render(DOC.get("#gridRow"), i));
-      }) //renders and assigns
+      })
       .catch((error) => {
         throw new Error(error);
       });
