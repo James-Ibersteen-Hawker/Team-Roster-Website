@@ -173,9 +173,71 @@ html {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
         overflow: clip;
+        .carousel-header,
+        .carousel-footer {
+          width: 100%;
+          height: 20%;
+          display: flex;
+          align-items: center;
+          flex-grow: 0;
+          flex-shrink: 0;
+          justify-content: center;
+        }
+        hr {
+          height: 1px;
+          width: 100%;
+          opacity: 1;
+          border: none;
+          background: var(--blue);
+        }
+        .carousel-header {
+          font-family: "Solo3D", sans-serif;
+          font-size: 30px;
+          border-bottom: 1px solid var(--blue);
+        }
+        .carousel-footer {
+          font-family: "Solo3D", sans-serif;
+          font-size: 30px;
+          border-top: 1px solid var(--blue);
+        }
         .text {
-          transform: skew(10deg);
+          overflow-x: clip;
+          overflow-y: clip;
+          width: 100%;
+          height: 60%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 10px !important;
+          .carousel-div {
+            width: 100%;
+            height: 100%;
+            margin: 10px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+            padding-top: 20px;
+            .carousel-heading {
+              font-family: "Aero", sans-serif;
+              background-color: var(--blue);
+              color: white;
+              padding: 5px 10px;
+              border-radius: 5px;
+            }
+            #r {
+              font-size: 20px;
+              align-self: flex-start;
+            }
+            #l {
+              align-self: flex-end;
+            }
+          }
         }
       }
       #gridRow {

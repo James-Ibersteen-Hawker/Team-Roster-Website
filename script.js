@@ -96,10 +96,39 @@ const CAROUSEL = {
     fetch("quotes.txt")
       .then((response) => response.text())
       .then((data) => {
-        data.split("@").forEach((e) => {
-          this.text.push(e.split(":"));
-        });
-        this.e.textContent = this.text;
+        data.split("@").forEach((e) => this.text.push(e.split(":")));
+        this.text.splice(0, 1);
+        const div = DOC.create("div", `cDIV`, "carousel-div");
+        let mH = DOC.create("p", "r", "carousel-heading");
+        let lH = DOC.create("p", "l", "carousel-heading");
+        mH.textContent = this.text[0][0];
+        lH.textContent = this.text[0][1];
+        div.append(mH);
+        div.append(lH);
+        this.e.append(div);
+        setInterval(
+          () => {
+            let num = Math.floor(Math.random() * this.text.length);
+            [mH, lH].forEach((e) => e.classList.add("fadeOut"));
+            setTimeout(() => {
+              [mH, lH].forEach((e, i) => {
+                e.classList.remove("fadeOut");
+                e.textContent = this.text[num][i];
+                e.classList.add("fadeIn");
+                setTimeout(
+                  () => {
+                    e.classList.remove("fadeIn");
+                  },
+                  1000,
+                  e
+                );
+              });
+            }, 1000);
+          },
+          5000,
+          mH,
+          lH
+        );
       })
       .catch((error) => console.error(error));
   },
