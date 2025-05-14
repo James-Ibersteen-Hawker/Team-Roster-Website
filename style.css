@@ -328,7 +328,6 @@ html {
     background-size: auto 100%;
   }
 }
-
 /*utility animation classes*/
 .moveNavDown {
   animation-name: moveNavDown;
@@ -411,4 +410,7 @@ html {
   border-radius: 20px;
   box-shadow: 0px 0px 20px var(--blue);
   backdrop-filter: blur(10px);
+}
+*[onclick^="DOC.link"] {
+  cursor: pointer;
 }

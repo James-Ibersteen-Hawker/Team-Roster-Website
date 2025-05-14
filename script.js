@@ -63,6 +63,9 @@ const DOC = {
     if (classes.length > 0) e.classList.add(...classes);
     return e;
   },
+  link: function (arg) {
+    window.location = arg;
+  },
 };
 const PAGEOPS = {
   setup: function () {
@@ -92,6 +95,7 @@ const PAGEOPS = {
 const CAROUSEL = {
   text: [],
   e: DOC.get("#carouselBody .text"),
+  index: undefined,
   setText: function () {
     fetch("quotes.txt")
       .then((response) => response.text())
@@ -110,6 +114,7 @@ const CAROUSEL = {
           () => {
             let num = Math.floor(Math.random() * this.text.length);
             [mH, lH].forEach((e) => e.classList.add("fadeOut"));
+            this.index = num;
             setTimeout(() => {
               [mH, lH].forEach((e, i) => {
                 e.classList.remove("fadeOut");
@@ -125,7 +130,7 @@ const CAROUSEL = {
               });
             }, 1000);
           },
-          5000,
+          4000,
           mH,
           lH
         );
