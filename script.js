@@ -80,6 +80,7 @@ const PAGEOPS = {
       DOC.getALL("header ul li")[0].addEventListener("click", PAGEOPS.home);
       DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
       DOC.get("#carouselRosterBtn").addEventListener("click", PAGEOPS.roster);
+      TABS.setup();
     }, 2000);
   },
   moveNext: function () {
@@ -188,9 +189,38 @@ const CAROUSEL = {
   },
 };
 const TABS = {
-  tabs: DOC.getALL(".tabs"),
-  swap: function() {
-    
-  }
-}
+  tabs: DOC.getALL(".tab"),
+  current: 3,
+  swap: function (tabnum) {
+    let c = this.current;
+    if (tabnum < c && c - tabnum != 2) {
+      this.tabs[c - 1].classList.add("tabBack");
+      this.tabs[c - 2].classList.add("tabBack2");
+      this.tabs[c - 2].classList.add("active");
+      this.tabs[c - 1].classList.remove("active");
+      setTimeout(() => {
+        this.tabs[c - 1].classList.remove("tabBack");
+        this.tabs[c - 2].classList.remove("tabBack2");
+      }, 1000);
+      this.current = tabnum;
+    } else if (tabnum > c && tabnum - c != 2) {
+      this.tabs[c - 1].classList.add("tabForward");
+      this.tabs[c].classList.add("tabForward2");
+      this.tabs[c].classList.add("active");
+      this.tabs[c - 1].classList.remove("active");
+      setTimeout(() => {
+        this.tabs[c - 1].classList.remove("tabForward");
+        this.tabs[c].classList.remove("tabForward2");
+      }, 1000);
+      this.current = tabnum;
+    }
+  },
+  setup: function () {
+    this.tabs.forEach((e, i) =>
+      e.addEventListener("click", () => {
+        this.swap(i + 1);
+      })
+    );
+  },
+};
 PAGEOPS.setup();
