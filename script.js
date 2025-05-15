@@ -109,6 +109,7 @@ const PAGEOPS = {
     DOC.get(".hero").classList.add("toRosterNav");
     DOC.get(".hero").classList.remove("moveNavDown");
     DOC.get(".hero").classList.remove("toHomeNav");
+    TABS.reset();
     setTimeout(() => {
       DOC.get("#carouselBody").classList.remove("fadeOut");
       DOC.get("#carouselBody").classList.add("d-none");
@@ -221,6 +222,11 @@ const TABS = {
         this.swap(i + 1);
       })
     );
+  },
+  reset: function () {
+    this.tabs.forEach((e) => e.classList.remove("active"));
+    this.tabs[2].classList.add("active");
+    this.current = 3;
   },
 };
 PAGEOPS.setup();
