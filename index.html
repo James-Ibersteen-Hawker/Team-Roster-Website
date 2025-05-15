@@ -14,6 +14,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body class="container-fluid">
@@ -39,13 +45,20 @@
       </div>
       <div id="gridRow" class="row d-none">
         <div class="gridControl">
-          <input
-            type="text"
-            placeholder="Search the Galaxy"
-            id="search"
-            name="search"
-          />
-          <input type="submit" />
+          <div class="search">
+            <input
+              type="text"
+              placeholder="Search the Galaxy"
+              id="search"
+              name="search"
+            />
+            <input type="submit" />
+          </div>
+          <div class="tabs">
+            <div class="tab tab1">Rebellion</div>
+            <div class="tab tab2">Empire</div>
+            <div class="tab tab3 active">All</div>
+          </div>
         </div>
       </div>
     </main>

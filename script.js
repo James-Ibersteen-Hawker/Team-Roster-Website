@@ -187,4 +187,10 @@ const CAROUSEL = {
     this.setText();
   },
 };
+const TABS = {
+  tabs: DOC.getALL(".tabs"),
+  swap: function() {
+    
+  }
+}
 PAGEOPS.setup();
