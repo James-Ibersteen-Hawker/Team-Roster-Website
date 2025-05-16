@@ -8,4 +8,13 @@ Master@Yoda@900@Rebellion@Jedi@imgs/Yoda.png@bonus;
 Leia@Organa@19@Rebellion@Princess@imgs/PrincessLeia.png@bonus;
 Grand@Moff Tarkin@54@Empire@Moff@imgs/MoffTarkin.png@bonus;
 Han@Solo@32@Rebellion@Smuggler@imgs/hanSolo.png@bonus;
-Chewbacca@N/A@Rebellion@Wookie@imgs/chewbacca.png@bonus
+Chewbacca@N/A@N/A@Rebellion@Wookie@imgs/chewbacca.png@bonus;
+Moff@Gideon@50@Empire@Warlord@imgs/MoffGideon.png@bonus;
+Maximilian@Veers@53@Empire@General@imgs/MaximilianVeers.png@bonus;
+Kylo@Ren@29@Empire@Dark Side@imgs/KyloRen.png@bonus;
+Lando@Calrissian@35@Rebellion@General@imgs/LandoCalrissian.png@bonus;
+Padmé@Amidala@27@Rebellion@Senator@imgs/PadméAmidala.png@bonus;
+Mace@Windu@53@Rebellion@Jedi Master@imgs/MaceWindu.png@bonus;
+Qui-Gon@Jinn@60@Rebellion@Jedi Master@imgs/Qui-GonJinn.png@bonus;
+Count@Dooku@83@Empire@Sith@imgs/CountDooku.png@bonus;
+General@Grievous@45@Empire@Commander@imgs/GeneralGrievous.png@bonus
