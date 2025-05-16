@@ -35,6 +35,9 @@ class Player {
 }
 const Team = {
   players: [],
+  E: [],
+  R: [],
+  set: false,
   setup: function () {
     fetch("team.txt")
       .then((result) => result.text())
@@ -46,10 +49,24 @@ const Team = {
         DOC.get("#gridRow").innerHTML = "";
         DOC.get("#gridRow").append(temp);
         this.players.forEach((p, i) => p.render(DOC.get("#gridRow"), i));
+        this.players.forEach((p) => {
+          if (p.ally[0] == "E") this.E.push(p);
+          else if (p.ally[0] == "R") this.R.push(p);
+        });
+        this.set = true;
       })
       .catch((error) => {
         throw new Error(error);
       });
+  },
+  tab: function (letter) {
+    let control = DOC.get(".gridControl");
+    DOC.get("#gridRow").innerHTML = "";
+    DOC.get("#gridRow").append(control);
+    if (!["R", "E"].includes(letter.toUpperCase()))
+      this.players.forEach((e) => e.render(DOC.get("#gridRow")));
+    else
+      this[letter.toUpperCase()].forEach((e) => e.render(DOC.get("#gridRow")));
   },
 };
 const DOC = {
@@ -117,7 +134,7 @@ const PAGEOPS = {
     setTimeout(() => {
       DOC.get("#gridRow").classList.add("fadeIn");
       DOC.get("#gridRow").classList.remove("d-none");
-      Team.setup();
+      if (!Team.set) Team.setup();
       setTimeout(() => {
         DOC.get("#gridRow").classList.remove("fadeIn");
       }, 1000);
@@ -196,25 +213,29 @@ const TABS = {
     let c = this.current;
     if (tabnum < c && c - tabnum != 2) {
       this.tabs[c - 1].classList.add("tabBack");
-      this.tabs[c - 2].classList.add("tabBack2");
-      this.tabs[c - 2].classList.add("active");
+      this.tabs[c - 2].classList.add("tabBack2", "active");
       this.tabs[c - 1].classList.remove("active");
+      this.tabs.forEach((e) => e.classList.add("off"));
       setTimeout(() => {
+        this.tabs.forEach((e) => e.classList.remove("off"));
         this.tabs[c - 1].classList.remove("tabBack");
         this.tabs[c - 2].classList.remove("tabBack2");
-      }, 1000);
+      }, 500);
       this.current = tabnum;
     } else if (tabnum > c && tabnum - c != 2) {
       this.tabs[c - 1].classList.add("tabForward");
-      this.tabs[c].classList.add("tabForward2");
-      this.tabs[c].classList.add("active");
+      this.tabs[c].classList.add("tabForward2", "active");
       this.tabs[c - 1].classList.remove("active");
+      this.tabs.forEach((e) => e.classList.add("off"));
       setTimeout(() => {
+        this.tabs.forEach((e) => e.classList.remove("off"));
         this.tabs[c - 1].classList.remove("tabForward");
         this.tabs[c].classList.remove("tabForward2");
-      }, 1000);
+      }, 500);
       this.current = tabnum;
     }
+    const letter = this.tabs[this.current - 1].textContent[0];
+    Team.tab(letter);
   },
   setup: function () {
     this.tabs.forEach((e, i) =>

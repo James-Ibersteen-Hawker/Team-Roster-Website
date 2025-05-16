@@ -273,11 +273,11 @@ html {
         overflow-x: clip;
         margin: 0;
         top: calc(var(--headerHeight) + 100px);
-        padding: 55px 20px 20px 20px;
+        padding: 90px 20px 20px 20px;
         -ms-overflow-style: none;
         scrollbar-width: none;
         div[data-name^="c"] {
-          aspect-ratio: 6/5;
+          aspect-ratio: 1/1;
           padding: 5px;
           div {
             border-radius: 10px;
@@ -570,7 +570,7 @@ html {
 .tabBack::after {
   animation-name: tabBack;
   animation-timing-function: linear;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -585,7 +585,7 @@ html {
 .tabBack2::after {
   animation-name: tabBack2;
   animation-timing-function: linear;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -600,7 +600,7 @@ html {
 .tabForward::after {
   animation-name: tabForward;
   animation-timing-function: linear;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -615,7 +615,7 @@ html {
 .tabForward2::after {
   animation-name: tabForward2;
   animation-timing-function: linear;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -626,4 +626,7 @@ html {
   to {
     left: 0;
   }
+}
+.off {
+  pointer-events: none;
 }
