@@ -1,20 +1,21 @@
-Darth@Vader@N/A@Empire@Sith@imgs/DarthVader.png@bonus;
-Luke@Skywalker@19@Rebellion@Jedi@imgs/LukeSkywalker.png@bonus;
-Obi-wan@Kenobi@57@Rebellion@Jedi@imgs/ObiwanKenobi.png@bonus;
-Jar-jar@Binks@N/A@Rebellion@Ambassador@imgs/JarJar.png@bonus;
-Sheev@Palpatine@88@Empire@Sith@imgs/Palpatine.png@bonus;
-Darth@Maul@22@Empire@Sith@imgs/DarthMaul.png@bonus;
-Master@Yoda@900@Rebellion@Jedi@imgs/Yoda.png@bonus;
-Leia@Organa@19@Rebellion@Princess@imgs/PrincessLeia.png@bonus;
-Grand@Moff Tarkin@54@Empire@Moff@imgs/MoffTarkin.png@bonus;
-Han@Solo@32@Rebellion@Smuggler@imgs/hanSolo.png@bonus;
-Chewbacca@N/A@N/A@Rebellion@Wookie@imgs/chewbacca.png@bonus;
-Moff@Gideon@50@Empire@Warlord@imgs/MoffGideon.png@bonus;
-Maximilian@Veers@53@Empire@General@imgs/MaximilianVeers.png@bonus;
-Kylo@Ren@29@Empire@Dark Side@imgs/KyloRen.png@bonus;
-Lando@Calrissian@35@Rebellion@General@imgs/LandoCalrissian.png@bonus;
-Padmé@Amidala@27@Rebellion@Senator@imgs/PadméAmidala.png@bonus;
-Mace@Windu@53@Rebellion@Jedi Master@imgs/MaceWindu.png@bonus;
-Qui-Gon@Jinn@60@Rebellion@Jedi Master@imgs/Qui-GonJinn.png@bonus;
-Count@Dooku@83@Empire@Sith@imgs/CountDooku.png@bonus;
-General@Grievous@45@Empire@Commander@imgs/GeneralGrievous.png@bonus
+C3@P0@N/A@Rebellion@Droid@headshots/C3P0.png/bonus; (converting)
+Chewbacca@N/A@N/A@Rebellion@Wookie@headshots/chewbacca.png@bonus;
+Count@Dooku@83@Empire@Sith@headshots/CountDooku.png@bonus;
+Darth@Maul@22@Empire@Sith@headshots/DarthMaul.png@bonus;
+Darth@Vader@N/A@Empire@Sith@headshots/DarthVader.png@bonus;
+General@Grievous@45@Empire@Commander@headshots/GeneralGrievous.png@bonus; (converting)
+Grand@Moff Tarkin@54@Empire@Moff@headshots/GrandMoffTarkin.png@bonus;
+Han@Solo@32@Rebellion@Smuggler@headshots/HanSolo.png@bonus;
+Jar-jar@Binks@N/A@Rebellion@Ambassador@headshots/JarJarBinks.png@bonus;
+Kylo@Ren@29@Empire@Sith@headshots/KyloRen.png@bonus;
+Lando@Calrissian@35@Rebellion@General@headshots/LandoCalrissian.png@bonus;
+Leia@Organa@19@Rebellion@Princess@headshots/PrincessLeia.png@bonus; (converting)
+Luke@Skywalker@19@Rebellion@Jedi@headshots/LukeSkywalker.png@bonus;
+Mace@Windu@53@Rebellion@Jedi@headshots/MaceWindu.png@bonus; (converting)
+Master@Yoda@900@Rebellion@Jedi@headshots/MasterYoda.png@bonus;
+Maximilian@Veers@53@Empire@General@headshots/MaximilianVeers.png@bonus; (converting)
+Obi-wan@Kenobi@57@Rebellion@Jedi@headshots/ObiwanKenobi.png@bonus; (converting)
+Padmé@Amidala@27@Rebellion@Senator@headshots/PadmeAmidala.png@bonus; (converting)
+Qui-Gon@Jinn@60@Rebellion@Jedi@headshots/Qui-GonJinn.png@bonus; (converting)
+R2@D2@N/A@Rebellion@Droid@headshots/R2D2.png@bonus; (converting)
+Sheev@Palpatine@88@Empire@Sith@headshots/SheevPalpatine.png@bonus (converting)
