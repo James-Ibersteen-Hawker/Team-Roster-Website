@@ -27,7 +27,15 @@ class Player {
       "col-lg-3"
     );
     const content = DOC.create("div");
-    content.textContent = `${this.fname}, ${this.lname}, Age: ${this.age}, Ally: ${this.ally}`;
+    const img = DOC.create("img");
+    img.src = this.img;
+    const txt = DOC.create("div", "", "itemText");
+    txt.innerHTML = `<h2>${this.fname} ${(() => {
+      if (this.lname == "N/A") return "";
+      else return this.lname;
+    })()}</h2>Age: ${this.age}<br>Ally: ${this.ally}<br>${this.job}`;
+    content.append(img);
+    content.append(txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.append(content);
     loc.append(card);
