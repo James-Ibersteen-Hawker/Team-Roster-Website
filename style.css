@@ -302,6 +302,7 @@ html {
               height: 50%;
               border: none;
               h2 {
+                font-family: "Aero", sans-serif;
                 margin: 3px;
                 position: relative;
               }
@@ -343,8 +344,9 @@ html {
         }
         .R {
           div {
+            box-shadow: 0px 0px 3px white;
             background: linear-gradient(to bottom, white, rgb(179, 179, 179));
-            border: 5px outset rgb(26, 26, 26);
+            border: 5px inset rgb(26, 26, 26);
             div {
               border-top: 3px solid rgb(26, 26, 26) !important;
               h2::after {
