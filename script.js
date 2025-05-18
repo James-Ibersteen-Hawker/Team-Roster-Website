@@ -30,12 +30,20 @@ class Player {
     const img = DOC.create("img");
     img.src = this.img;
     const txt = DOC.create("div", "", "itemText");
-    txt.innerHTML = `<h2>${this.fname} ${(() => {
+    const h2 = DOC.create("h2");
+    h2.textContent = `${this.fname} ${(() => {
       if (this.lname == "N/A") return "";
       else return this.lname;
-    })()}</h2>Age: ${this.age}<br>Ally: ${this.ally}<br>${this.job}`;
-    content.append(img);
-    content.append(txt);
+    })()}`;
+    const row = DOC.create("div", "", "infoRow");
+    let [col6, col62] = Array.from({ length: 2 }, () =>
+      DOC.create("div", "", "infodiv")
+    );
+    col6.textContent = `Age: ${this.age}`;
+    col62.textContent = `${this.job}`;
+    DOC.add(row, col6, col62);
+    DOC.add(txt, h2, row);
+    DOC.add(content, img, txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.append(content);
     loc.append(card);
@@ -94,6 +102,9 @@ const DOC = {
   },
   link: function (arg) {
     window.location = arg;
+  },
+  add: function (loc, ...e) {
+    e.forEach((p) => loc.append(p));
   },
 };
 const PAGEOPS = {

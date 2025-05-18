@@ -322,6 +322,59 @@ html {
                   transparent
                 );
               }
+              div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 35%;
+                position: relative;
+                margin: -2px 0 0 0 !important;
+                border: none !important;
+                background: transparent;
+                box-shadow: none !important;
+                .infodiv {
+                  position: relative;
+                  height: 100%;
+                  padding: 0px 12px;
+                  border-radius: 0;
+                  font-size: 18px;
+                  font-weight: 700;
+                  font-style: italic;
+                }
+                .infodiv:nth-child(1) {
+                  justify-content: end;
+                }
+                .infodiv:nth-child(2) {
+                  justify-content: start;
+                }
+              }
+              div.infoRow::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                height: 2px;
+                width: 80%;
+                mask-image: linear-gradient(
+                  to right,
+                  transparent,
+                  white,
+                  white,
+                  transparent
+                );
+              }
+              div.infoRow::after {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: auto;
+                aspect-ratio: 1/1;
+                bottom: -150%;
+                left: 50%;
+                transform: translate(-50%, -45%);
+                background: maroon;
+              }
             }
           }
         }
@@ -339,6 +392,23 @@ html {
               h2::after {
                 background: hsl(33, 35%, 78%);
               }
+              div {
+                .infodiv:nth-child(1) {
+                  border-right: 1px solid hsl(33, 35%, 78%) !important;
+                }
+                .infodiv:nth-child(2) {
+                  border-left: 1px solid hsl(33, 35%, 78%) !important;
+                }
+              }
+              div.infoRow::before {
+                background: hsl(33, 35%, 78%);
+              }
+              div.infoRow::after {
+                mask-image: url(imgs/Empire.png);
+                mask-size: 80% 80%;
+                mask-position: center center;
+                mask-repeat: no-repeat;
+              }
             }
           }
         }
@@ -351,6 +421,23 @@ html {
               border-top: 3px solid rgb(26, 26, 26) !important;
               h2::after {
                 background-color: rgb(26, 26, 26);
+              }
+              div {
+                .infodiv:nth-child(1) {
+                  border-right: 1px solid rgb(26, 26, 26) !important;
+                }
+                .infodiv:nth-child(2) {
+                  border-left: 1px solid rgb(26, 26, 26) !important;
+                }
+              }
+              div.infoRow::before {
+                background: rgb(26, 26, 26);
+              }
+              div.infoRow::after {
+                mask-image: url(imgs/Rebellion.webp);
+                mask-size: 80% 80%;
+                mask-position: center center;
+                mask-repeat: no-repeat;
               }
             }
           }
@@ -492,7 +579,6 @@ html {
     background-size: auto 100%;
   }
 }
-/*utility animation classes*/
 .moveNavDown {
   animation-name: moveNavDown;
   animation-duration: 2.5s;
