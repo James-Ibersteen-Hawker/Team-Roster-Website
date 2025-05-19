@@ -117,6 +117,7 @@ const PAGEOPS = {
       DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
       DOC.get("#carouselRosterBtn").addEventListener("click", PAGEOPS.roster);
       TABS.setup();
+      SEARCH.setup();
     }, 2000);
   },
   moveNext: function () {
@@ -267,6 +268,34 @@ const TABS = {
     this.tabs.forEach((e) => e.classList.remove("active"));
     this.tabs[2].classList.add("active");
     this.current = 3;
+  },
+};
+const SEARCH = {
+  results: [],
+  txt: undefined,
+  e: DOC.get("#search"),
+  search: function () {
+    this.results = [];
+    let f = this.e.value.toLowerCase();
+    Team.players.forEach((p) => {
+      for (let prop in p) {
+        if (
+          p[prop].toLowerCase().includes(f) &&
+          !["img", "bonus", "ally"].includes(prop)
+        ) {
+          this.results.push(p);
+          break;
+        }
+      }
+    });
+    const GC = DOC.get(".gridControl");
+    DOC.get("#gridRow").innerHTML = "";
+    DOC.get("#gridRow").append(GC);
+    this.results.forEach((r) => r.render(DOC.get("#gridRow")));
+    this.e.focus();
+  },
+  setup: function () {
+    this.e.addEventListener("input", this.search.bind(this));
   },
 };
 PAGEOPS.setup();

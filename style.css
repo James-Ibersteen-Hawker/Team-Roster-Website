@@ -373,7 +373,7 @@ html {
                 bottom: -150%;
                 left: 50%;
                 transform: translate(-50%, -45%);
-                background: maroon;
+                background: rgb(255, 0, 0);
               }
             }
           }
@@ -408,6 +408,7 @@ html {
                 mask-size: 80% 80%;
                 mask-position: center center;
                 mask-repeat: no-repeat;
+                filter: drop-shadow(0px 0px 3px white);
               }
             }
           }
@@ -460,12 +461,23 @@ html {
             display: flex;
             justify-content: center;
             align-items: center;
-            input {
+            height: 50%;
+            padding: 0 !important;
+            input,
+            select {
               font-family: "Julius Sans One", sans-serif;
               color: var(--blue);
               padding: 2px 5px;
               border-radius: 10px;
               font-weight: 800;
+            }
+            select {
+              margin: 0 2px 0 0;
+              display: block;
+              padding: 4px 5px;
+              height: calc(100% + 20px) !important;
+              background: white !important;
+              border: 2px inset gray;
             }
           }
           .tabs {
