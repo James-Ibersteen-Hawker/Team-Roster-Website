@@ -280,6 +280,7 @@ html {
           aspect-ratio: 1/1;
           padding: 5px;
           font-family: "Raleway", sans-serif;
+          transition: 0.1s;
           div {
             border-radius: 10px;
             height: 100%;
@@ -299,7 +300,7 @@ html {
               border-top-left-radius: 0;
               border-bottom-right-radius: 5px;
               border-bottom-left-radius: 5px;
-              height: 50%;
+              height: 49%;
               border: none !important;
               position: relative;
               h2 {
@@ -355,6 +356,9 @@ html {
                     border: 0 !important;
                     background: transparent;
                     box-shadow: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                   }
                   .infodiv:nth-child(1) {
                     justify-content: end;
@@ -401,6 +405,10 @@ html {
               }
             }
           }
+        }
+        div[data-name^="c"]:hover {
+          transform: scale(1.01);
+          z-index: 2;
         }
         .E {
           div {
