@@ -52,7 +52,11 @@ class Player {
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.setAttribute("data-job", this.job);
     card.append(content);
+    card.addEventListener("click", this.bonusShow.bind(this));
     loc.append(card);
+  }
+  bonusShow() {
+    alert(this.bonus);
   }
 }
 const Team = {
@@ -146,12 +150,10 @@ const PAGEOPS = {
     }, 800);
   },
   roster: function () {
-    console.log("roster");
     DOC.get("#carouselBody").classList.add("fadeOut");
     DOC.get("#carouselBody").classList.remove("fadeIn");
     DOC.get(".hero").classList.add("toRosterNav");
-    DOC.get(".hero").classList.remove("moveNavDown");
-    DOC.get(".hero").classList.remove("toHomeNav");
+    DOC.get(".hero").classList.remove("moveNavDown", "toHomeNav");
     TABS.reset();
     setTimeout(() => {
       DOC.get("#carouselBody").classList.remove("fadeOut");
@@ -168,8 +170,7 @@ const PAGEOPS = {
   },
   home: function () {
     DOC.get("#carouselBody").classList.add("fadeIn");
-    DOC.get("#carouselBody").classList.remove("d-none");
-    DOC.get("#carouselBody").classList.remove("fadeOut");
+    DOC.get("#carouselBody").classList.remove("d-none", "fadeOut");
     DOC.get(".hero").classList.add("toHomeNav");
     DOC.get(".hero").classList.remove("toRosterNav");
     DOC.get("#gridRow").classList.add("fadeOut");
@@ -283,14 +284,19 @@ const SEARCH = {
   search: function () {
     this.results = [];
     let f = this.e.value.toLowerCase();
+    let PF = DOC.get(".search select").value;
     Team.players.forEach((p) => {
-      for (let prop in p) {
-        if (
-          p[prop].toLowerCase().includes(f) &&
-          !["img", "bonus", "ally"].includes(prop)
-        ) {
-          this.results.push(p);
-          break;
+      if (PF && PF != "general") {
+        if (p[PF].toLowerCase().includes(f)) this.results.push(p);
+      } else {
+        for (let prop in p) {
+          if (
+            p[prop].toLowerCase().includes(f) &&
+            !["img", "bonus", "ally"].includes(prop)
+          ) {
+            this.results.push(p);
+            break;
+          }
         }
       }
     });
