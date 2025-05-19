@@ -410,6 +410,32 @@ html {
           transform: scale(1.01);
           z-index: 2;
         }
+        div[data-job="Sith"] {
+          div {
+            div {
+              .infoRow {
+                .infoRowSub {
+                  .infodiv:nth-child(2) {
+                    text-shadow: 0px 0px 2px white, 0px 0px 5px red;
+                  }
+                }
+              }
+            }
+          }
+        }
+        div[data-job="Jedi"] {
+          div {
+            div {
+              .infoRow {
+                .infoRowSub {
+                  .infodiv:nth-child(2) {
+                    text-shadow: 0px 0px 2px white, 0px 0px 5px green;
+                  }
+                }
+              }
+            }
+          }
+        }
         .E {
           div {
             background: linear-gradient(

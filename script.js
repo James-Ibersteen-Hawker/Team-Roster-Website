@@ -48,6 +48,7 @@ class Player {
     DOC.add(txt, h2, row);
     DOC.add(content, img, txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
+    card.setAttribute("data-job", this.job);
     card.append(content);
     loc.append(card);
   }
