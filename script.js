@@ -29,6 +29,7 @@ class Player {
     const content = DOC.create("div");
     const img = DOC.create("img");
     img.src = this.img;
+    const imgOverlay = DOC.create("span", "", "imgOverlay");
     const txt = DOC.create("div", "", "itemText");
     const h2 = DOC.create("h2");
     h2.textContent = `${this.fname} ${(() => {
@@ -46,7 +47,7 @@ class Player {
     DOC.add(subRow, col6, col62);
     DOC.add(row, subRow, allegiance);
     DOC.add(txt, h2, row);
-    DOC.add(content, img, txt);
+    DOC.add(content, img, imgOverlay, txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.setAttribute("data-job", this.job);
     card.append(content);
