@@ -36,12 +36,15 @@ class Player {
       else return this.lname;
     })()}`;
     const row = DOC.create("div", "", "infoRow");
+    const subRow = DOC.create("div", "", "infoRowSub");
     let [col6, col62] = Array.from({ length: 2 }, () =>
       DOC.create("div", "", "infodiv")
     );
     col6.textContent = `Age: ${this.age}`;
     col62.textContent = `${this.job}`;
-    DOC.add(row, col6, col62);
+    const allegiance = DOC.create("div", "", "allegiance");
+    DOC.add(subRow, col6, col62);
+    DOC.add(row, subRow, allegiance);
     DOC.add(txt, h2, row);
     DOC.add(content, img, txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
@@ -96,8 +99,8 @@ const DOC = {
   },
   create: function (tag, id = "", ...classes) {
     let e = this.e.createElement(tag);
-    e.id = id;
     if (classes.length > 0) e.classList.add(...classes);
+    e.id = id;
     return e;
   },
   link: function (arg) {

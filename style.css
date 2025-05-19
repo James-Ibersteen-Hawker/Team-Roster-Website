@@ -300,11 +300,13 @@ html {
               border-bottom-right-radius: 5px;
               border-bottom-left-radius: 5px;
               height: 50%;
-              border: none;
+              border: none !important;
+              position: relative;
               h2 {
                 font-family: "Aero", sans-serif;
                 margin: 3px;
                 position: relative;
+                height: 25%;
               }
               h2::after {
                 content: "";
@@ -322,58 +324,80 @@ html {
                   transparent
                 );
               }
-              div {
+              .infoRow {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 35%;
+                flex-direction: column;
+                height: 75%;
                 position: relative;
-                margin: -2px 0 0 0 !important;
+                margin: -4px 0 0 0 !important;
                 border: none !important;
                 background: transparent;
                 box-shadow: none !important;
-                .infodiv {
+                .infoRowSub {
+                  border: none !important;
+                  background: transparent;
+                  box-shadow: none;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 45%;
                   position: relative;
-                  height: 100%;
-                  padding: 0px 12px;
-                  border-radius: 0;
-                  font-size: 18px;
-                  font-weight: 700;
-                  font-style: italic;
+                  .infodiv {
+                    position: relative;
+                    height: 100%;
+                    padding: 0px 12px;
+                    border-radius: 0;
+                    font-size: 18px;
+                    font-weight: 700;
+                    font-style: italic;
+                    border: 0 !important;
+                    background: transparent;
+                    box-shadow: none;
+                  }
+                  .infodiv:nth-child(1) {
+                    justify-content: end;
+                  }
+                  .infodiv:nth-child(2) {
+                    justify-content: start;
+                  }
                 }
-                .infodiv:nth-child(1) {
-                  justify-content: end;
+                .infoRowSub::before {
+                  position: absolute;
+                  content: "";
+                  width: 80%;
+                  height: 2px;
+                  bottom: 0;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  mask-image: linear-gradient(
+                    to right,
+                    transparent,
+                    white,
+                    white,
+                    transparent
+                  );
                 }
-                .infodiv:nth-child(2) {
-                  justify-content: start;
+                .allegiance {
+                  background: transparent;
+                  border: none !important;
+                  box-shadow: none;
+                  height: calc(50% + 4px);
+                  width: 100%;
+                  position: relative;
                 }
-              }
-              div.infoRow::before {
-                content: "";
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 0;
-                height: 2px;
-                width: 80%;
-                mask-image: linear-gradient(
-                  to right,
-                  transparent,
-                  white,
-                  white,
-                  transparent
-                );
-              }
-              div.infoRow::after {
-                content: "";
-                position: absolute;
-                height: 100%;
-                width: auto;
-                aspect-ratio: 1/1;
-                bottom: -150%;
-                left: 50%;
-                transform: translate(-50%, -45%);
-                background: rgb(255, 0, 0);
+                .allegiance::before {
+                  content: "";
+                  position: absolute;
+                  height: 85%;
+                  width: auto;
+                  aspect-ratio: 1/1;
+                  background-color: maroon;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
               }
             }
           }
@@ -392,23 +416,27 @@ html {
               h2::after {
                 background: hsl(33, 35%, 78%);
               }
-              div {
-                .infodiv:nth-child(1) {
-                  border-right: 1px solid hsl(33, 35%, 78%) !important;
+              .infoRow {
+                .infoRowSub {
+                  .infodiv:nth-child(1) {
+                    border-right: 1px solid hsl(33, 35%, 78%) !important;
+                  }
+                  .infodiv:nth-child(2) {
+                    border-left: 1px solid hsl(33, 35%, 78%) !important;
+                  }
                 }
-                .infodiv:nth-child(2) {
-                  border-left: 1px solid hsl(33, 35%, 78%) !important;
+                .infoRowSub::before {
+                  background: hsl(33, 35%, 78%);
                 }
-              }
-              div.infoRow::before {
-                background: hsl(33, 35%, 78%);
-              }
-              div.infoRow::after {
-                mask-image: url(imgs/Empire.png);
-                mask-size: 80% 80%;
-                mask-position: center center;
-                mask-repeat: no-repeat;
-                filter: drop-shadow(0px 0px 3px white);
+                .allegiance {
+                  filter: drop-shadow(0px 0px 3px hsl(33, 35%, 78%));
+                }
+                .allegiance::before {
+                  mask-image: url(imgs/Empire.png);
+                  mask-size: contain;
+                  mask-repeat: no-repeat;
+                  mask-position: center center;
+                }
               }
             }
           }
@@ -423,22 +451,27 @@ html {
               h2::after {
                 background-color: rgb(26, 26, 26);
               }
-              div {
-                .infodiv:nth-child(1) {
-                  border-right: 1px solid rgb(26, 26, 26) !important;
+              .infoRow {
+                .infoRowSub {
+                  .infodiv:nth-child(1) {
+                    border-right: 1px solid rgb(26, 26, 26) !important;
+                  }
+                  .infodiv:nth-child(2) {
+                    border-left: 1px solid rgb(26, 26, 26) !important;
+                  }
                 }
-                .infodiv:nth-child(2) {
-                  border-left: 1px solid rgb(26, 26, 26) !important;
+                .infoRowSub::before {
+                  background: rgb(26, 26, 26);
                 }
-              }
-              div.infoRow::before {
-                background: rgb(26, 26, 26);
-              }
-              div.infoRow::after {
-                mask-image: url(imgs/Rebellion.webp);
-                mask-size: 80% 80%;
-                mask-position: center center;
-                mask-repeat: no-repeat;
+                .allegiance {
+                  filter: drop-shadow(0px 0px 3px rgb(26, 26, 26));
+                }
+                .allegiance::before {
+                  mask-image: url(imgs/Empire.png);
+                  mask-size: contain;
+                  mask-repeat: no-repeat;
+                  mask-position: center center;
+                }
               }
             }
           }
