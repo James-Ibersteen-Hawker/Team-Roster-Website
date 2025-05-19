@@ -30,6 +30,7 @@ class Player {
     const img = DOC.create("img");
     img.src = this.img;
     const imgOverlay = DOC.create("span", "", "imgOverlay");
+    imgOverlay.textContent = "Click to find out more";
     const txt = DOC.create("div", "", "itemText");
     const h2 = DOC.create("h2");
     h2.textContent = `${this.fname} ${(() => {
