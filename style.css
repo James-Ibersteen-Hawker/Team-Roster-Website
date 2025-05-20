@@ -686,6 +686,7 @@ html {
       width: 100%;
       height: 100%;
       z-index: 10;
+      left: -100%;
     }
     footer {
       height: calc(var(--headerHeight) - 10px);
@@ -949,4 +950,21 @@ html {
 }
 .off {
   pointer-events: none;
+}
+@keyframes vader {
+  from {
+    left: -100%;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+.vaderAnim {
+  animation-name: vader;
+  animation-timing-function: ease-out;
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }

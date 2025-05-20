@@ -63,7 +63,12 @@ class Player {
     observer.observe(card);
   }
   bonusShow() {
-    alert(this.bonus);
+    DOC.get(".vader").classList.add("vaderAnim");
+    let bg = ["vader1", "vader2", "vader3"];
+    DOC.get(".vader").setAttribute(
+      "style",
+      `background: url(vader/${bg[Math.floor(Math.random() * bg.length)]}.png)`
+    );
   }
 }
 const Team = {
