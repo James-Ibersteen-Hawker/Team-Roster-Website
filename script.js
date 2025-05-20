@@ -30,7 +30,7 @@ class Player {
     const img = DOC.create("img");
     img.src = this.img;
     const imgOverlay = DOC.create("span", "", "imgOverlay");
-    imgOverlay.textContent = "Click to find out more";
+    imgOverlay.textContent = "Click the logo to find out more";
     const txt = DOC.create("div", "", "itemText");
     const h2 = DOC.create("h2");
     h2.textContent = `${this.fname} ${(() => {
@@ -45,6 +45,7 @@ class Player {
     col6.textContent = `Age: ${this.age}`;
     col62.textContent = `${this.job}`;
     const allegiance = DOC.create("div", "", "allegiance");
+    allegiance.addEventListener("click", this.bonusShow.bind(this));
     DOC.add(subRow, col6, col62);
     DOC.add(row, subRow, allegiance);
     DOC.add(txt, h2, row);
@@ -52,8 +53,14 @@ class Player {
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.setAttribute("data-job", this.job);
     card.append(content);
-    card.addEventListener("click", this.bonusShow.bind(this));
     loc.append(card);
+    let observer = new ResizeObserver((entries) => {
+      entries[0].target.setAttribute(
+        "style",
+        `height: ${entries[0].target.offsetWidth}px !important;`
+      );
+    });
+    observer.observe(card);
   }
   bonusShow() {
     alert(this.bonus);
@@ -269,7 +276,7 @@ const TABS = {
   setup: function () {
     this.tabs.forEach((e, i) =>
       e.addEventListener("click", () => {
-        this.swap(i + 1).bind(this);
+        this.swap(i + 1);
       })
     );
   },
