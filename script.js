@@ -314,7 +314,8 @@ const SEARCH = {
         for (let prop in p) {
           if (
             p[prop].toLowerCase().includes(f) &&
-            !["img", "bonus", "ally"].includes(prop)
+            !["img", "bonus", "ally"].includes(prop) &&
+            p[prop] != "N/A"
           ) {
             this.results.push(p);
             break;
