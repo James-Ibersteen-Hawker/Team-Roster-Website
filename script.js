@@ -63,6 +63,7 @@ const Team = {
   players: [],
   E: [],
   R: [],
+  M: [],
   set: false,
   setup: function () {
     fetch("team.txt")
@@ -78,6 +79,7 @@ const Team = {
         this.players.forEach((p) => {
           if (p.ally[0] == "E") this.E.push(p);
           else if (p.ally[0] == "R") this.R.push(p);
+          else if (p.ally[0] == "M") this.M.push(p);
         });
         this.set = true;
       })
@@ -89,7 +91,7 @@ const Team = {
     let control = DOC.get(".gridControl");
     DOC.get("#gridRow").innerHTML = "";
     DOC.get("#gridRow").append(control);
-    if (!["R", "E"].includes(letter.toUpperCase()))
+    if (!["R", "E", "M"].includes(letter.toUpperCase()))
       this.players.forEach((e) => e.render(DOC.get("#gridRow")));
     else
       this[letter.toUpperCase()].forEach((e) => e.render(DOC.get("#gridRow")));
@@ -235,7 +237,7 @@ const CAROUSEL = {
 };
 const TABS = {
   tabs: DOC.getALL(".tab"),
-  current: 3,
+  current: 4,
   swap: function (tabnum) {
     let c = this.current;
     if (tabnum < c && c - tabnum != 2) {
@@ -267,14 +269,14 @@ const TABS = {
   setup: function () {
     this.tabs.forEach((e, i) =>
       e.addEventListener("click", () => {
-        this.swap(i + 1);
+        this.swap(i + 1).bind(this);
       })
     );
   },
   reset: function () {
     this.tabs.forEach((e) => e.classList.remove("active"));
-    this.tabs[2].classList.add("active");
-    this.current = 3;
+    this.tabs[3].classList.add("active");
+    this.current = 4;
   },
 };
 const SEARCH = {

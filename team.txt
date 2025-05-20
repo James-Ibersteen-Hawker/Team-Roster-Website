@@ -1,12 +1,15 @@
 Admiral@Ackbar@60@Rebellion@Admiral@headshots/AdmiralAckbar.png@bonus;
 Anakin@Skywalker@22@Empire@Jedi@headshots/AnakinSkywalker.png@bonus;
-Boba@Fett@41@Empire@Bounty-Hunter@headshots/BobaFett.png@bonus;
+Boba@Fett@41@Mandalorian@Bounty-Hunter@headshots/BobaFett.png@bonus;
+Bo-Katan@Kryze@56@Mandalorian@Mandalorian@headshots/BoKatan.png@bonus;
 Boss@Nass@58@Rebellion@Gungan@headshots/BossNass.png@bonus;
 C3-P0@N/A@N/A@Rebellion@Droid@headshots/C3P0.png@bonus;
 Chewbacca@N/A@N/A@Rebellion@Wookie@headshots/chewbacca.png@bonus;
 Count@Dooku@83@Empire@Sith@headshots/CountDooku.png@bonus;
 Darth@Maul@22@Empire@Sith@headshots/DarthMaul.png@bonus;
 Darth@Vader@N/A@Empire@Sith@headshots/DarthVader.png@bonus;
+Din@Djarin@38@Mandalorian@Mandalorian@headshots/Mandalorian.png@bonus;
+Din@Grogu@50@Mandalorian@Force-attuned@headshots/Grogu.png@bonus;
 General@Grievous@45@Empire@Commander@headshots/GeneralGrievous.png@bonus;
 Grand@Moff Tarkin@54@Empire@Moff@headshots/GrandMoffTarkin.png@bonus;
 Han@Solo@32@Rebellion@Smuggler@headshots/HanSolo.png@bonus;
