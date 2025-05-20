@@ -64,10 +64,13 @@ class Player {
   }
   bonusShow() {
     DOC.get(".vader").classList.add("vaderAnim");
+    DOC.get(".vader").classList.remove("vaderBackAnim");
     let bg = ["vader1", "vader2", "vader3"];
     DOC.get(".vader").setAttribute(
       "style",
-      `background: url(vader/${bg[Math.floor(Math.random() * bg.length)]}.png)`
+      `background: url(vader/${
+        bg[Math.floor(Math.random() * bg.length)]
+      }.png), rgba(255,255,255,.7); background-position: left bottom; background-size: contain; background-repeat: no-repeat;backdrop-filter: blur(5px);`
     );
   }
 }
@@ -134,6 +137,7 @@ const DOC = {
 const PAGEOPS = {
   setup: function () {
     DOC.get("#go").addEventListener("click", this.moveNext);
+    DOC.get(".x").addEventListener("click", this.closeVader);
     setTimeout(() => {
       DOC.get(".hero").classList.add("pulsing");
       DOC.get(".hero").classList.remove("bgZoom");
@@ -193,6 +197,10 @@ const PAGEOPS = {
       DOC.get("#gridRow").classList.remove("fadeOut");
       DOC.get("#gridRow").classList.add("d-none");
     }, 1000);
+  },
+  closeVader: function () {
+    DOC.get(".vader").classList.add("vaderBackAnim");
+    DOC.get(".vader").classList.remove("vaderAnim");
   },
 };
 const CAROUSEL = {
