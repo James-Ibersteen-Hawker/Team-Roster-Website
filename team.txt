@@ -1,5 +1,5 @@
 Admiral@Ackbar@60@Rebellion@Admiral@headshots/AdmiralAckbar.png@bonus;
-Anakin@Skywalker@22@Empire@Jedi@headshots/AnakinSkywalker.png@bonus;
+Anakin@Skywalker@22@Empire@Jedi@headshots/AnakinSkywalker.png@Anakin became Darth Vader after he fought Obi-wan Kenobi, his master, on Mustafar, losing half of his body and burning himself in the process. He was later found and helped to recover by Emperor Palpatine.;
 Boba@Fett@41@Mandalorian@Bounty-Hunter@headshots/BobaFett.png@bonus;
 Bo-Katan@Kryze@56@Mandalorian@Mandalorian@headshots/BoKatan.png@bonus;
 Boss@Nass@58@Rebellion@Gungan@headshots/BossNass.png@bonus;
@@ -25,6 +25,6 @@ Maximilian@Veers@53@Empire@General@headshots/MaximilianVeers.png@bonus;
 Nute@Gunray@58@Empire@Viceroy@headshots/NuteGunray.png@bonus;
 Obi-Wan@Kenobi@57@Rebellion@Jedi@headshots/ObiwanKenobi.png@bonus;
 Padmé@Amidala@27@Rebellion@Senator@headshots/PadmeAmidala.png@bonus;
-Qui-Gon@Jinn@60@Rebellion@Jedi@headshots/Qui-GonJinn.png@bonus;
+Qui-Gon@Jinn@60@Rebellion@Jedi@headshots/Qui-GonJinn.png@Qui-gon Jinn was Obi-wan Kenobi's master in <b><i>The Phantom Menace</i></b>. He was killed by Darth Maul inside of Queen Amidala's palace on Naboo.;
 R2-D2@N/A@N/A@Rebellion@Droid@headshots/R2D2.png@bonus;
 Sheev@Palpatine@88@Empire@Sith@headshots/SheevPalpatine.png@bonus

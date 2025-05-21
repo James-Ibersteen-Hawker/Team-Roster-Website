@@ -72,6 +72,7 @@ class Player {
         bg[Math.floor(Math.random() * bg.length)]
       }.png), rgba(255,255,255,.7); background-position: left bottom; background-size: contain; background-repeat: no-repeat;backdrop-filter: blur(5px);`
     );
+    DOC.get("#vaderTextBox").innerHTML = this.bonus;
   }
 }
 const Team = {

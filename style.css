@@ -3,7 +3,7 @@ html {
   height: 100%;
   body {
     --blue: rgb(2, 0, 26);
-    --headerHeight: 100px; 
+    --headerHeight: 100px;
     background: var(--blue);
     width: 100%;
     height: 100%;
@@ -712,6 +712,34 @@ html {
         svg {
           transform: scale(1.01);
         }
+      }
+      .textVader {
+        color: black;
+        font-family: "Raleway", sans-serif;
+        width: 40%;
+        min-height: 120px;
+        background: rgba(203, 203, 203, 0.558);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        transform: skew(-10deg);
+        position: absolute;
+        top: 50px;
+        padding: 10px;
+        right: 30px;
+        margin-right: 10px;
+        border: 3px solid rgb(216, 216, 216);
+        filter: drop-shadow(0px 0px 10px var(--blue));
+      }
+      .arrow {
+        position: absolute;
+        top: 57px;
+        left: -43px;
+        height: 40px;
+        border-right: 40px solid rgb(216, 216, 216);
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
       }
     }
     @media screen and (max-width: 700px) {
