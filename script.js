@@ -1,4 +1,26 @@
 "use strict";
+const DOC = {
+  e: document,
+  body: document.body,
+  get: function (arg) {
+    return this.e.querySelector(arg);
+  },
+  getALL: function (arg) {
+    return Array.from(this.e.querySelectorAll(arg));
+  },
+  create: function (tag, id = "", ...classes) {
+    let e = this.e.createElement(tag);
+    if (classes.length > 0) e.classList.add(...classes);
+    e.id = id;
+    return e;
+  },
+  link: function (arg) {
+    window.location = arg;
+  },
+  add: function (loc, ...e) {
+    e.forEach((p) => loc.append(p));
+  },
+};
 class Player {
   fname;
   lname;
@@ -81,6 +103,7 @@ const Team = {
   R: [],
   M: [],
   set: false,
+  control: DOC.get(".gridControl"),
   setup: function () {
     fetch("team.txt")
       .then((result) => result.text())
@@ -88,15 +111,10 @@ const Team = {
         data.split(";").forEach((e) => {
           this.players.push(new Player(...e.split("@")));
         });
-        let temp = DOC.get(".gridControl");
         DOC.get("#gridRow").innerHTML = "";
-        DOC.get("#gridRow").append(temp);
+        DOC.get("#gridRow").append(this.control);
         this.players.forEach((p, i) => p.render(DOC.get("#gridRow"), i));
-        this.players.forEach((p) => {
-          if (p.ally[0] == "E") this.E.push(p);
-          else if (p.ally[0] == "R") this.R.push(p);
-          else if (p.ally[0] == "M") this.M.push(p);
-        });
+        this.players.forEach((p) => this[p.ally[0]].push(p));
         this.set = true;
       })
       .catch((error) => {
@@ -104,44 +122,26 @@ const Team = {
       });
   },
   tab: function (letter) {
-    let control = DOC.get(".gridControl");
     DOC.get("#gridRow").innerHTML = "";
-    DOC.get("#gridRow").append(control);
+    DOC.get("#gridRow").append(this.control);
     if (!["R", "E", "M"].includes(letter.toUpperCase()))
       this.players.forEach((e) => e.render(DOC.get("#gridRow")));
     else
       this[letter.toUpperCase()].forEach((e) => e.render(DOC.get("#gridRow")));
   },
 };
-const DOC = {
-  e: document,
-  body: document.body,
-  get: function (arg) {
-    return this.e.querySelector(arg);
-  },
-  getALL: function (arg) {
-    return Array.from(this.e.querySelectorAll(arg));
-  },
-  create: function (tag, id = "", ...classes) {
-    let e = this.e.createElement(tag);
-    if (classes.length > 0) e.classList.add(...classes);
-    e.id = id;
-    return e;
-  },
-  link: function (arg) {
-    window.location = arg;
-  },
-  add: function (loc, ...e) {
-    e.forEach((p) => loc.append(p));
-  },
-};
 const PAGEOPS = {
   setup: function () {
+    HTMLElement.prototype.classes = function (...classes) {
+      classes.forEach((c) => {
+        if (c[0] == "+") this.classList.add(c.substring(1));
+        else if (c[0] == "-") this.classList.remove(c.substring(1));
+      });
+    };
     DOC.get("#go").addEventListener("click", this.moveNext);
     DOC.get(".x").addEventListener("click", this.closeVader);
     setTimeout(() => {
-      DOC.get(".hero").classList.add("pulsing");
-      DOC.get(".hero").classList.remove("bgZoom");
+      DOC.get(".hero").classes("+pulsing", "-bgZoom");
       DOC.getALL("header ul li")[0].addEventListener("click", PAGEOPS.home);
       DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
       DOC.get("#carouselRosterBtn").addEventListener("click", PAGEOPS.roster);
@@ -150,53 +150,40 @@ const PAGEOPS = {
     }, 2000);
   },
   moveNext: function () {
-    DOC.get(".hero-button").classList.remove("gradfade");
-    DOC.get(".hero-button").classList.add("fadeOut");
+    DOC.get(".hero-button").classes("-gradfade", "+fadeOut");
+    setTimeout(() => DOC.get(".hero-button").classes("+d-none"), 1000);
     setTimeout(() => {
-      DOC.get(".hero-button").classList.add("d-none");
-    }, 1000);
-    setTimeout(() => {
-      DOC.get(".hero").classList.remove("pulsing");
-      DOC.get(".hero").classList.add("moveNavDown");
+      DOC.get(".hero").classes("-pulsing", "+moveNavDown");
       [DOC.get("header"), DOC.get("footer"), DOC.get("#carouselBody")].forEach(
-        (e) => e.classList.remove("d-none")
+        (e) => e.classes("-d-none")
       );
       [DOC.get("header"), DOC.get("footer")].forEach((e) =>
-        e.classList.add("fadeInNAV")
+        e.classes("+fadeInNAV")
       );
-      DOC.get("#carouselBody").classList.add("fadeIn");
+      DOC.get("#carouselBody").classes("+fadeIn");
       CAROUSEL.setup();
     }, 800);
   },
   roster: function () {
-    DOC.get("#carouselBody").classList.add("fadeOut");
-    DOC.get("#carouselBody").classList.remove("fadeIn");
-    DOC.get(".hero").classList.add("toRosterNav");
-    DOC.get(".hero").classList.remove("moveNavDown", "toHomeNav");
+    DOC.get("#carouselBody").classes("+fadeOut", "-fadeIn");
+    DOC.get(".hero").classes("+toRosterNav", "-moveNavDown", "-toHomeNav");
     TABS.reset();
     setTimeout(() => {
-      DOC.get("#carouselBody").classList.remove("fadeOut");
-      DOC.get("#carouselBody").classList.add("d-none");
+      DOC.get("#carouselBody").classes("-fadeOut", "+d-none");
     }, 1000);
     setTimeout(() => {
-      DOC.get("#gridRow").classList.add("fadeIn");
-      DOC.get("#gridRow").classList.remove("d-none");
+      DOC.get("#gridRow").classes("+fadeIn", "-d-none");
       if (!Team.set) Team.setup();
-      setTimeout(() => {
-        DOC.get("#gridRow").classList.remove("fadeIn");
-      }, 1000);
+      setTimeout(() => DOC.get("#gridRow").classes("-fadeIn"), 1000);
     }, 2500);
   },
   home: function () {
-    DOC.get("#carouselBody").classList.add("fadeIn");
-    DOC.get("#carouselBody").classList.remove("d-none", "fadeOut");
-    DOC.get(".hero").classList.add("toHomeNav");
-    DOC.get(".hero").classList.remove("toRosterNav");
-    DOC.get("#gridRow").classList.add("fadeOut");
+    DOC.get("#carouselBody").classes("+fadeIn", "-d-none", "-fadeOut");
+    DOC.get(".hero").classes("+toHomeNav", "-toRosterNav");
+    DOC.get("#gridRow").classes("+fadeOut");
     setTimeout(() => {
-      DOC.get("#carouselBody").classList.remove("fadeIn");
-      DOC.get("#gridRow").classList.remove("fadeOut");
-      DOC.get("#gridRow").classList.add("d-none");
+      DOC.get("#carouselBody").classes("-fadeIn");
+      DOC.get("#gridRow").classes("-fadeOut", "+d-none");
     }, 1000);
   },
   closeVader: function () {
