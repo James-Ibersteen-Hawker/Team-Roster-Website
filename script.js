@@ -17,9 +17,6 @@ const DOC = {
   link: function (arg) {
     window.location = arg;
   },
-  add: function (loc, ...e) {
-    e.forEach((p) => loc.append(p));
-  },
 };
 class Player {
   fname;
@@ -112,7 +109,7 @@ const Team = {
           this.players.push(new Player(...e.split("@")));
         });
         this.grid.innerHTML = "";
-        this.grid.append(this.control);
+        this.grid.add(this.control);
         this.players.forEach((p, i) => p.render(this.grid, i));
         this.players.forEach((p) => this[p.ally[0]].push(p));
         this.set = true;
@@ -123,9 +120,9 @@ const Team = {
   },
   tab: function (letter) {
     this.grid.innerHTML = "";
-    this.grid.append(this.control);
+    this.grid.add(this.control);
     if (!["R", "E", "M"].includes(letter.toUpperCase()))
-      this.players.forEach((e) => e.render(DOC.get("#gridRow")));
+      this.players.forEach((e) => e.render(Team.grid));
     else this[letter.toUpperCase()].forEach((e) => e.render(this.grid));
   },
 };
@@ -156,47 +153,43 @@ const PAGEOPS = {
     setTimeout(() => DOC.get(".hero-button").classes("+d-none"), 1000);
     setTimeout(() => {
       DOC.get(".hero").classes("-pulsing", "+moveNavDown");
-      [DOC.get("header"), DOC.get("footer"), DOC.get("#carouselBody")].forEach(
-        (e) => e.classes("-d-none")
+      [DOC.get("header"), DOC.get("footer"), CAROUSEL.body].forEach((e) =>
+        e.classes("-d-none")
       );
       [DOC.get("header"), DOC.get("footer")].forEach((e) =>
         e.classes("+fadeInNAV")
       );
-      DOC.get("#carouselBody").classes("+fadeIn");
-      CAROUSEL.setup();
+      CAROUSEL.body.classes("+fadeIn");
+      CAROUSEL.setText();
     }, 800);
   },
   roster: function () {
-    DOC.get("#carouselBody").classes("+fadeOut", "-fadeIn");
+    CAROUSEL.body.classes("+fadeOut", "-fadeIn");
     DOC.get(".hero").classes("+toRosterNav", "-moveNavDown", "-toHomeNav");
     TABS.reset();
+    setTimeout(() => CAROUSEL.body.classes("-fadeOut", "+d-none"), 1000);
     setTimeout(() => {
-      DOC.get("#carouselBody").classes("-fadeOut", "+d-none");
-    }, 1000);
-    setTimeout(() => {
-      DOC.get("#gridRow").classes("+fadeIn", "-d-none");
+      Team.grid.classes("+fadeIn", "-d-none");
       if (!Team.set) Team.setup();
-      setTimeout(() => DOC.get("#gridRow").classes("-fadeIn"), 1000);
+      setTimeout(() => Team.grid.classes("-fadeIn"), 1000);
     }, 2500);
   },
   home: function () {
-    DOC.get("#carouselBody").classes("+fadeIn", "-d-none", "-fadeOut");
+    CAROUSEL.body.classes("+fadeIn", "-d-none", "-fadeOut");
     DOC.get(".hero").classes("+toHomeNav", "-toRosterNav");
-    DOC.get("#gridRow").classes("+fadeOut");
+    Team.grid.classes("+fadeOut");
     setTimeout(() => {
-      DOC.get("#carouselBody").classes("-fadeIn");
-      DOC.get("#gridRow").classes("-fadeOut", "+d-none");
+      CAROUSEL.body.classes("-fadeIn");
+      Team.grid.classes("-fadeOut", "+d-none");
     }, 1000);
   },
-  closeVader: function () {
-    DOC.get(".vader").classList.add("vaderBackAnim");
-    DOC.get(".vader").classList.remove("vaderAnim");
-  },
+  closeVader: () => DOC.get(".vader").classes("+vaderBackAnim", "-vaderAnim"),
 };
 const CAROUSEL = {
   text: [],
   e: DOC.get("#carouselBody .text"),
-  index: undefined,
+  body: DOC.get("#carouselBody"),
+  index: 0,
   setText: function () {
     fetch("quotes.txt")
       .then((response) => response.text())
@@ -208,29 +201,20 @@ const CAROUSEL = {
         let lH = DOC.create("p", "l", "carousel-heading");
         mH.textContent = this.text[0][0];
         lH.textContent = this.text[0][1];
-        div.append(mH);
-        div.append(lH);
-        this.e.append(div);
+        div.add(mH, lH);
+        this.e.add(div);
         setInterval(
           () => {
             let num = Math.floor(Math.random() * this.text.length);
             while (num == this.index)
               num = Math.floor(Math.random() * this.text.length);
             this.index = num;
-            [mH, lH].forEach((e) => e.classList.add("fadeOut"));
-            this.index = num;
+            [mH, lH].forEach((e) => e.classes("+fadeOut"));
             setTimeout(() => {
               [mH, lH].forEach((e, i) => {
-                e.classList.remove("fadeOut");
+                e.classes("-fadeOut", "+fadeIn");
                 e.textContent = this.text[num][i];
-                e.classList.add("fadeIn");
-                setTimeout(
-                  () => {
-                    e.classList.remove("fadeIn");
-                  },
-                  1000,
-                  e
-                );
+                setTimeout(() => e.classes("-fadeIn"), 1000, e);
               });
             }, 1000);
           },
@@ -239,10 +223,9 @@ const CAROUSEL = {
           lH
         );
       })
-      .catch((error) => console.error(error));
-  },
-  setup: function () {
-    this.setText();
+      .catch((error) => {
+        throw new Error(error);
+      });
   },
 };
 const TABS = {
@@ -313,10 +296,9 @@ const SEARCH = {
         }
       }
     });
-    const GC = DOC.get(".gridControl");
-    DOC.get("#gridRow").innerHTML = "";
-    DOC.get("#gridRow").append(GC);
-    this.results.forEach((r) => r.render(DOC.get("#gridRow")));
+    Team.grid.innerHTML = "";
+    Team.grid.add(Team.control);
+    this.results.forEach((r) => r.render(Team.grid));
     this.e.focus();
   },
   setup: function () {
