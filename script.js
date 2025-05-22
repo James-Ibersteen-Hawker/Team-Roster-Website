@@ -32,10 +32,10 @@ class Player {
       (this.img = img),
       (this.bonus = bonus);
   }
-  render(loc, num) {
+  render(loc) {
     const card = DOC.create(
       "div",
-      `CARD${num}`,
+      "",
       `${this.ally[0]}`,
       "col-12",
       "col-sm-6",
@@ -107,7 +107,7 @@ const Team = {
         });
         this.grid.innerHTML = "";
         this.grid.add(this.control);
-        this.players.forEach((p, i) => p.render(this.grid, i));
+        this.players.forEach((p) => p.render(this.grid));
         this.players.forEach((p) => this[p.ally[0]].push(p));
         this.set = true;
       })
@@ -274,21 +274,16 @@ const SEARCH = {
     this.results = [];
     let f = this.e.value.toLowerCase();
     let PF = DOC.get(".search select").value;
-    Team.players.forEach((p) => {
-      if (PF && PF != "general") {
-        if (p[PF].toLowerCase().includes(f)) this.results.push(p);
-      } else {
-        for (let prop in p) {
-          if (
-            p[prop].toLowerCase().includes(f) &&
-            !["img", "bonus", "ally"].includes(prop) &&
-            p[prop] != "N/A"
-          ) {
-            this.results.push(p);
-            break;
-          }
-        }
-      }
+    this.results = Team.players.filter((p) => {
+      return p[PF] && PF != "general"
+        ? p[PF]?.toLowerCase().includes(f)
+        : Object.keys(p).some((k) => {
+            return (
+              typeof p[k] == "string" &&
+              p[k].toLowerCase().includes(f) &&
+              !["imgs", "ally", "bonus"].includes(k)
+            );
+          });
     });
     Team.grid.innerHTML = "";
     Team.grid.add(Team.control);
