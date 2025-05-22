@@ -14,9 +14,6 @@ const DOC = {
     e.id = id;
     return e;
   },
-  link: function (arg) {
-    window.location = arg;
-  },
 };
 class Player {
   fname;
@@ -145,7 +142,7 @@ const PAGEOPS = {
       DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
       DOC.get("#carouselRosterBtn").addEventListener("click", PAGEOPS.roster);
       TABS.setup();
-      SEARCH.setup();
+      SEARCH.e.addEventListener("input", SEARCH.search.bind(SEARCH));
     }, 2000);
   },
   moveNext: function () {
@@ -233,31 +230,28 @@ const TABS = {
   current: 4,
   swap: function (tabnum) {
     let c = this.current;
-    if (tabnum < c && c - tabnum != 2) {
-      this.tabs[c - 1].classList.add("tabBack");
-      this.tabs[c - 2].classList.add("tabBack2", "active");
-      this.tabs[c - 1].classList.remove("active");
-      this.tabs.forEach((e) => e.classList.add("off"));
-      setTimeout(() => {
-        this.tabs.forEach((e) => e.classList.remove("off"));
-        this.tabs[c - 1].classList.remove("tabBack");
-        this.tabs[c - 2].classList.remove("tabBack2");
-      }, 500);
+    if (tabnum < c && c - tabnum < 2) {
+      this.tabs[c - 1].classes("+tabBack", "-active");
+      this.tabs[c - 2].classes("+tabBack2", "+active");
+      this.tabs.forEach((e) => e.classes("+off"));
       this.current = tabnum;
-    } else if (tabnum > c && tabnum - c != 2) {
-      this.tabs[c - 1].classList.add("tabForward");
-      this.tabs[c].classList.add("tabForward2", "active");
-      this.tabs[c - 1].classList.remove("active");
-      this.tabs.forEach((e) => e.classList.add("off"));
       setTimeout(() => {
-        this.tabs.forEach((e) => e.classList.remove("off"));
-        this.tabs[c - 1].classList.remove("tabForward");
-        this.tabs[c].classList.remove("tabForward2");
+        this.tabs.forEach((e) => e.classes("-off"));
+        this.tabs[c - 1].classes("-tabBack");
+        this.tabs[c - 2].classes("-tabBack2");
       }, 500);
+    } else if (tabnum > c && tabnum - c < 2) {
+      this.tabs[c - 1].classes("+tabForward", "-active");
+      this.tabs[c].classes("+tabForward2", "+active");
+      this.tabs.forEach((e) => e.classes("+off"));
       this.current = tabnum;
+      setTimeout(() => {
+        this.tabs.forEach((e) => e.classes("-off"));
+        this.tabs[c - 1].classes("-tabForward");
+        this.tabs[c].classes("-tabForward2");
+      }, 500);
     }
-    const letter = this.tabs[this.current - 1].textContent[0];
-    Team.tab(letter);
+    Team.tab(this.tabs[this.current - 1].textContent[0]);
   },
   setup: function () {
     this.tabs.forEach((e, i) =>
@@ -300,9 +294,6 @@ const SEARCH = {
     Team.grid.add(Team.control);
     this.results.forEach((r) => r.render(Team.grid));
     this.e.focus();
-  },
-  setup: function () {
-    this.e.addEventListener("input", this.search.bind(this));
   },
 };
 PAGEOPS.setup();
