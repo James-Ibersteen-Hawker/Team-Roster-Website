@@ -126,6 +126,7 @@ const Team = {
   },
 };
 const PAGEOPS = {
+  page: 1,
   setup: function () {
     HTMLElement.prototype.classes = function (...classes) {
       classes.forEach((c) => {
@@ -136,18 +137,27 @@ const PAGEOPS = {
     HTMLElement.prototype.add = function (...elems) {
       elems.forEach((e) => this.append(e));
     };
-    DOC.get("#go").addEventListener("click", this.moveNext);
+    DOC.get("#go").addEventListener("click", this.moveNext.bind(this));
     DOC.get(".x").addEventListener("click", this.closeVader);
     setTimeout(() => {
       DOC.get(".hero").classes("+pulsing", "-bgZoom");
-      DOC.getALL("header ul li")[0].addEventListener("click", PAGEOPS.home);
-      DOC.getALL("header ul li")[1].addEventListener("click", PAGEOPS.roster);
-      DOC.get("#carouselRosterBtn").addEventListener("click", PAGEOPS.roster);
+      DOC.getALL("header ul li").forEach((e) => {
+        let n = e.textContent.toLowerCase();
+        e.addEventListener("click", PAGEOPS[n].bind(PAGEOPS));
+      });
+      DOC.get("#carouselRosterBtn").addEventListener(
+        "click",
+        PAGEOPS.roster.bind(this)
+      );
+      DOC.getALL(".carousel-header span").forEach((e, i) => {
+        e.addEventListener("click", () => this.carouselTabs(i));
+      });
       TABS.setup();
       SEARCH.e.addEventListener("input", SEARCH.search.bind(SEARCH));
     }, 2000);
   },
   moveNext: function () {
+    this.page = 2;
     DOC.get(".hero-button").classes("-gradfade", "+fadeOut");
     setTimeout(() => DOC.get(".hero-button").classes("+d-none"), 1000);
     setTimeout(() => {
@@ -163,6 +173,7 @@ const PAGEOPS = {
     }, 800);
   },
   roster: function () {
+    this.page = 3;
     CAROUSEL.body.classes("+fadeOut", "-fadeIn");
     DOC.get(".hero").classes("+toRosterNav", "-moveNavDown", "-toHomeNav");
     TABS.reset();
@@ -174,13 +185,24 @@ const PAGEOPS = {
     }, 2500);
   },
   home: function () {
-    CAROUSEL.body.classes("+fadeIn", "-d-none", "-fadeOut");
-    DOC.get(".hero").classes("+toHomeNav", "-toRosterNav");
-    Team.grid.classes("+fadeOut");
-    setTimeout(() => {
-      CAROUSEL.body.classes("-fadeIn");
-      Team.grid.classes("-fadeOut", "+d-none");
-    }, 1000);
+    if (this.page != 2) {
+      this.page = 2;
+      CAROUSEL.body.classes("+fadeIn", "-d-none", "-fadeOut");
+      DOC.get(".hero").classes("+toHomeNav", "-toRosterNav");
+      Team.grid.classes("+fadeOut");
+      setTimeout(() => {
+        CAROUSEL.body.classes("-fadeIn");
+        Team.grid.classes("-fadeOut", "+d-none");
+      }, 1000);
+    }
+  },
+  carouselTabs: function (num) {
+    console.log(num);
+    DOC.getALL(".carousel-header span").forEach((e) => e.classes("-active"));
+    DOC.getALL(".carousel-header span")[num].classes("+active");
+    if (num == 0) {
+    } else if (num == 1) {
+    }
   },
   closeVader: () => DOC.get(".vader").classes("+vaderBackAnim", "-vaderAnim"),
 };
