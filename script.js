@@ -49,10 +49,7 @@ class Player {
     imgOverlay.textContent = "Click the logo to find out more";
     const txt = DOC.create("div", "", "itemText");
     const h2 = DOC.create("h2");
-    h2.textContent = `${this.fname} ${(() => {
-      if (this.lname == "N/A") return "";
-      else return this.lname;
-    })()}`;
+    h2.textContent = `${this.fname} ${this.thisL}`;
     const row = DOC.create("div", "", "infoRow");
     const subRow = DOC.create("div", "", "infoRowSub");
     let [col6, col62] = Array.from({ length: 2 }, () =>
@@ -70,13 +67,16 @@ class Player {
     card.setAttribute("data-job", this.job);
     card.add(content);
     loc.add(card);
-    let observer = new ResizeObserver((entries) => {
+    new ResizeObserver((entries) => {
       entries[0].target.setAttribute(
         "style",
         `height: ${entries[0].target.offsetWidth}px !important;`
       );
-    });
-    observer.observe(card);
+    }).observe(card);
+  }
+  get thisL() {
+    if (this.lname == "N/A") return "";
+    else return this.lname;
   }
   bonusShow() {
     DOC.get(".vader").classes("+vaderAnim", "-vaderBackAnim");
@@ -87,10 +87,9 @@ class Player {
         bg[Math.floor(Math.random() * bg.length)]
       }.png), rgba(255,255,255,.7); background-position: left bottom; background-size: contain; background-repeat: no-repeat;backdrop-filter: blur(5px);`
     );
-    DOC.get("#vaderTextBox").innerHTML = `<h2>${this.fname} ${(() => {
-      if (this.lname == "N/A") return "";
-      else return this.lname;
-    })()}</h2>${this.bonus}`;
+    DOC.get(
+      "#vaderTextBox"
+    ).innerHTML = `<h2>${this.fname} ${this.thisL}</h2>${this.bonus}`;
   }
 }
 const Team = {
