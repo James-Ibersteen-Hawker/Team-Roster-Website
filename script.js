@@ -87,7 +87,10 @@ class Player {
         bg[Math.floor(Math.random() * bg.length)]
       }.png), rgba(255,255,255,.7); background-position: left bottom; background-size: contain; background-repeat: no-repeat;backdrop-filter: blur(5px);`
     );
-    DOC.get("#vaderTextBox").innerHTML = this.bonus;
+    DOC.get("#vaderTextBox").innerHTML = `<h2>${this.fname} ${(() => {
+      if (this.lname == "N/A") return "";
+      else return this.lname;
+    })()}</h2>${this.bonus}`;
   }
 }
 const Team = {
