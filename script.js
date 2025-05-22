@@ -68,14 +68,14 @@ class Player {
     col62.textContent = `${this.job}`;
     const allegiance = DOC.create("div", "", "allegiance");
     allegiance.addEventListener("click", this.bonusShow.bind(this));
-    DOC.add(subRow, col6, col62);
-    DOC.add(row, subRow, allegiance);
-    DOC.add(txt, h2, row);
-    DOC.add(content, img, imgOverlay, txt);
+    subRow.add(col6, col62);
+    row.add(subRow, allegiance);
+    txt.add(h2, row);
+    content.add(img, imgOverlay, txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.setAttribute("data-job", this.job);
-    card.append(content);
-    loc.append(card);
+    card.add(content);
+    loc.add(card);
     let observer = new ResizeObserver((entries) => {
       entries[0].target.setAttribute(
         "style",
@@ -85,8 +85,7 @@ class Player {
     observer.observe(card);
   }
   bonusShow() {
-    DOC.get(".vader").classList.add("vaderAnim");
-    DOC.get(".vader").classList.remove("vaderBackAnim");
+    DOC.get(".vader").classes("+vaderAnim", "-vaderBackAnim");
     let bg = ["vader1", "vader2", "vader3"];
     DOC.get(".vader").setAttribute(
       "style",
@@ -103,6 +102,7 @@ const Team = {
   R: [],
   M: [],
   set: false,
+  grid: DOC.get("#gridRow"),
   control: DOC.get(".gridControl"),
   setup: function () {
     fetch("team.txt")
@@ -111,9 +111,9 @@ const Team = {
         data.split(";").forEach((e) => {
           this.players.push(new Player(...e.split("@")));
         });
-        DOC.get("#gridRow").innerHTML = "";
-        DOC.get("#gridRow").append(this.control);
-        this.players.forEach((p, i) => p.render(DOC.get("#gridRow"), i));
+        this.grid.innerHTML = "";
+        this.grid.append(this.control);
+        this.players.forEach((p, i) => p.render(this.grid, i));
         this.players.forEach((p) => this[p.ally[0]].push(p));
         this.set = true;
       })
@@ -122,12 +122,11 @@ const Team = {
       });
   },
   tab: function (letter) {
-    DOC.get("#gridRow").innerHTML = "";
-    DOC.get("#gridRow").append(this.control);
+    this.grid.innerHTML = "";
+    this.grid.append(this.control);
     if (!["R", "E", "M"].includes(letter.toUpperCase()))
       this.players.forEach((e) => e.render(DOC.get("#gridRow")));
-    else
-      this[letter.toUpperCase()].forEach((e) => e.render(DOC.get("#gridRow")));
+    else this[letter.toUpperCase()].forEach((e) => e.render(this.grid));
   },
 };
 const PAGEOPS = {
@@ -137,6 +136,9 @@ const PAGEOPS = {
         if (c[0] == "+") this.classList.add(c.substring(1));
         else if (c[0] == "-") this.classList.remove(c.substring(1));
       });
+    };
+    HTMLElement.prototype.add = function (...elems) {
+      elems.forEach((e) => this.append(e));
     };
     DOC.get("#go").addEventListener("click", this.moveNext);
     DOC.get(".x").addEventListener("click", this.closeVader);
