@@ -1,13 +1,13 @@
 Admiral@Ackbar@60@Rebellion@Admiral@headshots/AdmiralAckbar.png@Admiral Ackbar was the leader of the Rebel fleet, and led the attack on the second Death Star. He is known for his famous line, "It's a trap!". Across all the films, he had a net 3.5 minutes of screen time and 14 lines of dialogue.;
 Anakin@Skywalker@22@Empire@Jedi@headshots/AnakinSkywalker.png@Anakin became Darth Vader after he fought Obi-Wan Kenobi, his master, on Mustafar, losing half of his body and burning himself in the process. He was later found and helped to recover by Emperor Palpatine, becoming a full Sith Lord.;
-Boba@Fett@41@Mandalorian@Bounty-Hunter@headshots/BobaFett.png@bonus;
+Boba@Fett@41@Mandalorian@Bounty-Hunter@headshots/BobaFett.png@Boba Fett was a clone of Jango Fett, adopted by Jango as a son. Boba is a Mandalorian bounty hunter and is proficient in physical combat. He was eaten by the Sarlacc in <i><b>Return of the Jedi</b></i>;
 Bo-Katan@Kryze@56@Mandalorian@Mandalorian@headshots/BoKatan.png@bonus;
-Boss@Nass@58@Rebellion@Gungan@headshots/BossNass.png@bonus;
+Boss@Nass@58@Rebellion@Gungan@headshots/BossNass.png@Boss Nass was the leader of the Gungan underwater city in <i><b>The Phantom Menace</b></i>. His troops participated in The Battle of Naboo and he then promoted Jar Jar Binks to General;
 C3-P0@N/A@N/A@Rebellion@Droid@headshots/C3P0.png@C3-P0 was created by Anakin Skywalker, first seen in <b><i>The Phantom Menace</i></b>He later was transferred in ownership to Luke Skywalker, between the prequels and the original trilogy, where he was a part of the Rebel forces for all three films.;
 Chewbacca@N/A@N/A@Rebellion@Wookie@headshots/chewbacca.png@bonus;
 Count@Dooku@83@Empire@Sith@headshots/CountDooku.png@bonus;
 Darth@Maul@22@Empire@Sith@headshots/DarthMaul.png@bonus;
-Darth@Vader@N/A@Empire@Sith@headshots/DarthVader.png@Darth Vader is the Sith persona adopted by Anakin Skywalker after he was left to die on Mustafar after his fight with Obi-Wan Kenobi. Darth Vader's suit contains life-support systems which Vader depends on (including the iconic respirator), and it also restrains his power to prevent him from defeating Emperor Palpatine;
+Darth@Vader@N/A@Empire@Sith@headshots/DarthVader.png@Darth Vader is the Sith persona given to Anakin Skywalker by Emperor Palpatine. Darth Vader's suit contains life-support systems which Vader depends on (including the iconic respirator), and it also restrains his power to prevent him from defeating Emperor Palpatine;
 Din@Djarin@38@Mandalorian@Mandalorian@headshots/Mandalorian.png@bonus;
 Din@Grogu@50@Mandalorian@Force-attuned@headshots/Grogu.png@bonus;
 General@Grievous@45@Empire@Commander@headshots/GeneralGrievous.png@bonus;
@@ -20,10 +20,10 @@ Leia@Organa@19@Rebellion@Princess@headshots/PrincessLeia.png@bonus;
 Luke@Skywalker@19@Rebellion@Jedi@headshots/LukeSkywalker.png@bonus;
 Mace@Windu@53@Rebellion@Jedi@headshots/MaceWindu.png@bonus;
 Master@Yoda@900@Rebellion@Jedi@headshots/MasterYoda.png@bonus;
-Maximilian@Veers@53@Empire@General@headshots/MaximilianVeers.png@bonus;
-Nute@Gunray@58@Empire@Viceroy@headshots/NuteGunray.png@bonus;
+Maximilian@Veers@53@Empire@General@headshots/MaximilianVeers.png@Maximillian Veers was the leader of the AT-AT strike force on Hoth in the beginning of <b><i>The Empire Strikes Back</i></b>, and served as a cameo appearance for actor Julian Glover.;
+Nute@Gunray@58@Empire@Viceroy@headshots/NuteGunray.png@Nute Gunray was the viceroy of the Trade Federation in <i><b>The Phantom Menace</b></i>, blockading and subsequently invading Naboo to coerce Queen Amidala to sign favorable treaties. He later became a Separatist leader, being killed by Darth Vader on Mustafar.;
 Obi-Wan@Kenobi@57@Rebellion@Jedi@headshots/ObiwanKenobi.png@Qui-gon Jinn's apprentice and Anakin's mentor, Obi-wan was a formidable Jedi master. He left Anakin for dead on Mustafar after mortally wounding him, and later sacrificed himself in <i><b>A New Hope</b></i> to Anakin (now Darth Vader) to buy time for the Millenium Falcon to escape.;
-Padmé@Amidala@27@Rebellion@Senator@headshots/PadmeAmidala.png@Padmé Amidala, Queen of Naboo, was Anakin's love interest-then-wife. She died giving birth to twins Luke and Leia Skywalker. During the events of <i><b>The Phantom Menace</b></i>, her royal place was taken by a loyal handmaiden decoy Sabé for protection.;
+Padmé@Amidala@27@Rebellion@Senator@headshots/PadmeAmidala.png@Padmé Amidala, Queen of Naboo, was Anakin's love interest-then-wife. She died giving birth to twins Luke and Leia Skywalker. During the events of <i><b>The Phantom Menace</b></i>, her royal place was taken by a loyal handmaiden decoy, Sabé, for protection.;
 Qui-Gon@Jinn@60@Rebellion@Jedi@headshots/Qui-GonJinn.png@Qui-gon Jinn was Obi-wan Kenobi's master in <b><i>The Phantom Menace</i></b>. He was killed by Darth Maul inside of Queen Amidala's palace on Naboo.;
-R2-D2@N/A@N/A@Rebellion@Droid@headshots/R2D2.png@R2-D2 first appeared in <i><b>The Phantom Menace</b></i> and he aided Anakin in the destruction of the blockade. R2-D2 was present throughout all of the films as a slight source of comedic relief, and the film had a remotely operated version of him for movement and a human-acted version for static jostling.;
-Sheev@Palpatine@88@Empire@Sith@headshots/SheevPalpatine.png@bonus
+R2-D2@N/A@N/A@Rebellion@Droid@headshots/R2D2.png@R2-D2 first appeared in <i><b>The Phantom Menace</b></i> and he aided Anakin in the destruction of the Trade Federation blockade. R2-D2 was present throughout all of the films as a slight source of comedic relief, and the film had a remotely operated version of him for movement and a human-acted version for static jostling.;
+Sheev@Palpatine@88@Empire@Sith@headshots/SheevPalpatine.png@Sheev Palpatine was first seen in <i><b>The Phantom Menace</b></i> as Chancellor Palpatine, though the iconic hooded hologram was already present. He later was visually transformed into Darth Sidious during his fight with Mace Windu, and shortly after issued Order 66, initiating the Galactic Empire.
