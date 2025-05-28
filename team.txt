@@ -1,4 +1,4 @@
-Admiral@Ackbar@60@Rebellion@Admiral@headshots/AdmiralAckbar.png@bonus;
+Admiral@Ackbar@60@Rebellion@Admiral@headshots/AdmiralAckbar.png@Admiral Ackbar was the leader of the Rebel fleet, and led the attack on the second Death Star. He is known for his famous line, "It's a trap!". Across all the films, he had a net 3.5 minutes of screen time and 14 lines of dialogue.;
 Anakin@Skywalker@22@Empire@Jedi@headshots/AnakinSkywalker.png@Anakin became Darth Vader after he fought Obi-Wan Kenobi, his master, on Mustafar, losing half of his body and burning himself in the process. He was later found and helped to recover by Emperor Palpatine, becoming a full Sith Lord.;
 Boba@Fett@41@Mandalorian@Bounty-Hunter@headshots/BobaFett.png@bonus;
 Bo-Katan@Kryze@56@Mandalorian@Mandalorian@headshots/BoKatan.png@bonus;
@@ -22,8 +22,8 @@ Mace@Windu@53@Rebellion@Jedi@headshots/MaceWindu.png@bonus;
 Master@Yoda@900@Rebellion@Jedi@headshots/MasterYoda.png@bonus;
 Maximilian@Veers@53@Empire@General@headshots/MaximilianVeers.png@bonus;
 Nute@Gunray@58@Empire@Viceroy@headshots/NuteGunray.png@bonus;
-Obi-Wan@Kenobi@57@Rebellion@Jedi@headshots/ObiwanKenobi.png@bonus;
-Padmé@Amidala@27@Rebellion@Senator@headshots/PadmeAmidala.png@bonus;
+Obi-Wan@Kenobi@57@Rebellion@Jedi@headshots/ObiwanKenobi.png@Qui-gon Jinn's apprentice and Anakin's mentor, Obi-wan was a formidable Jedi master. He left Anakin for dead on Mustafar after mortally wounding him, and later sacrificed himself in <i><b>A New Hope</b></i> to Anakin (now Darth Vader) to buy time for the Millenium Falcon to escape.;
+Padmé@Amidala@27@Rebellion@Senator@headshots/PadmeAmidala.png@Padmé Amidala, Queen of Naboo, was Anakin's love interest-then-wife. She died giving birth to twins Luke and Leia Skywalker. During the events of <i><b>The Phantom Menace</b></i>, her royal place was taken by a loyal handmaiden decoy Sabé for protection.;
 Qui-Gon@Jinn@60@Rebellion@Jedi@headshots/Qui-GonJinn.png@Qui-gon Jinn was Obi-wan Kenobi's master in <b><i>The Phantom Menace</i></b>. He was killed by Darth Maul inside of Queen Amidala's palace on Naboo.;
-R2-D2@N/A@N/A@Rebellion@Droid@headshots/R2D2.png@bonus;
+R2-D2@N/A@N/A@Rebellion@Droid@headshots/R2D2.png@R2-D2 first appeared in <i><b>The Phantom Menace</b></i> and he aided Anakin in the destruction of the blockade. R2-D2 was present throughout all of the films as a slight source of comedic relief, and the film had a remotely operated version of him for movement and a human-acted version for static jostling.;
 Sheev@Palpatine@88@Empire@Sith@headshots/SheevPalpatine.png@bonus
