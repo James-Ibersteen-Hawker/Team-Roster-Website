@@ -89,7 +89,7 @@ class Player {
     );
     DOC.get(
       "#vaderTextBox"
-    ).innerHTML = `<h2>${this.fname} ${this.thisL}</h2>${this.bonus}`;
+    ).innerHTML = `<h2>${this.fname} ${this.thisL}</h2>${this.bonus}<div class="imgSkew"><img src="${this.img}" alt="${this.fname} ${this.lname}"></div>`;
   }
 }
 const Team = {
@@ -197,12 +197,19 @@ const PAGEOPS = {
     }
   },
   carouselTabs: function (num) {
-    console.log(num);
     DOC.getALL(".carousel-header span").forEach((e) => e.classes("-active"));
     DOC.getALL(".carousel-header span")[num].classes("+active");
-    if (num == 0) {
-    } else if (num == 1) {
-    }
+    let fadeOut, fadeIn;
+    if (num == 0) [fadeOut, fadeIn] = [".aboutText", ".quoteText"];
+    else if (num == 1) [fadeOut, fadeIn] = [".quoteText", ".aboutText"];
+    DOC.get(fadeOut).classes("+fadeOut");
+    setTimeout(() => {
+      DOC.get(fadeOut).classes("-fadeOut", "+d-none");
+      DOC.get(fadeIn).classes("+fadeIn", "-d-none");
+      setTimeout(() => {
+        DOC.get(fadeIn).classes("-fadeIn");
+      }, 1000);
+    }, 1000);
   },
   closeVader: () => DOC.get(".vader").classes("+vaderBackAnim", "-vaderAnim"),
 };
