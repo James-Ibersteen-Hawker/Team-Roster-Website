@@ -1,5 +1,5 @@
 Admiral@Ackbar@60@Rebellion@Admiral@headshots/AdmiralAckbar.png@Admiral Ackbar was the leader of the Rebel fleet, and led the attack on the second Death Star. He is known for his famous line, "It's a trap!". Across all the films, he had a net 3.5 minutes of screen time and 14 lines of dialogue.;
-Ahsoka@Tano@19@Rebellion@Jedi@headshots/AhsokaTano.png@bonus
+Ahsoka@Tano@19@Rebellion@Jedi@headshots/AhsokaTano.png@Ahsoka appears in the show <b><i>Ahsoka</i></b> and is most recognized for her distinctive head shape and dual white lightsabers.;
 Anakin@Skywalker@22@Empire@Jedi@headshots/AnakinSkywalker.png@Anakin became Darth Vader after he fought Obi-Wan Kenobi, his master, on Mustafar, losing half of his body and burning himself in the process. He was later found and helped to recover by Emperor Palpatine, becoming a full Sith Lord.;
 Boba@Fett@41@Mandalorian@Bounty-Hunter@headshots/BobaFett.png@Boba Fett was a clone of Jango Fett, adopted by Jango as a son. Boba is a Mandalorian bounty hunter and is proficient in physical combat. He was eaten by the Sarlacc in <i><b>Return of the Jedi</b></i>.;
 Bo-Katan@Kryze@56@Mandalorian@Mandalorian@headshots/BoKatan.png@Bo-Katan Kryze is a Mandalorian princess. She is also a member of a terrorist faction seeking to restore the ancient Mandalorian ways. She later becomes the leader of Mandalore.;
@@ -12,7 +12,7 @@ Darth@Maul@22@Empire@Sith@headshots/DarthMaul.png@Darth Maul was a Sith Lord und
 Darth@Vader@N/A@Empire@Sith@headshots/DarthVader.png@Darth Vader is the Sith persona given to Anakin Skywalker by Emperor Palpatine. Darth Vader's suit contains life-support systems which Vader depends on (including the iconic respirator), and it also restrains his power to prevent him from defeating Emperor Palpatine.;
 Din@Djarin@38@Mandalorian@Mandalorian@headshots/Mandalorian.png@Known as "The Mandalorian", Din Djarin is the primary character of <b><i>The Mandalorian</i></b>. He protects Din Grogu and is a bounty hunter.;
 Din@Grogu@50@Mandalorian@Force-attuned@headshots/Grogu.png@Din Grogu is a member of Yoda's species and is protected by Din Djarin in <b><i>The Mandalorian</i></b>. He is a skilled Force-user, and is later adopted by Din Djarin as his son.;
-General@Grievous@45@Empire@Commander@headshots/GeneralGrievous.png@bonus;
+General@Grievous@45@Empire@Commander@headshots/GeneralGrievous.png@General Grievous is a cyborg who wields 2-4 lightsabers. He is a Separatist leader and was killed by Obi-Wan Kenobi. He is not Force-attuned, but has excellent martial abilities. His hobby is killing Jedi and collecting their lightsabers.;
 Grand@Moff Tarkin@54@Empire@Moff@headshots/GrandMoffTarkin.png@bonus;
 Han@Solo@32@Rebellion@Smuggler@headshots/HanSolo.png@bonus;
 Jabba@The Hutt@604@Empire@Crime Lord@headshots/JabbaHutt.png@bonus;
