@@ -331,8 +331,8 @@ const AUDIO = {
     this.bgMusic = "MUSIC.wav";
     this.bgSpace = "DEEPSPACE.wav";
     this.bgSound();
-    let clickAudio = new Audio(this.clickAudio);
     window.addEventListener("click", () => {
+    let clickAudio = new Audio("CLICKBLASTER.wav");
       clickAudio.play()
     })
   },
