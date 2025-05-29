@@ -331,13 +331,16 @@ const AUDIO = {
     this.bgMusic = "MUSIC.wav";
     this.bgSpace = "DEEPSPACE.wav";
     this.bgSound();
-    window.addEventListener("click", () => {
     let clickAudio = new Audio(this.clickAudio);
-      clickAudio.play()})
+    window.addEventListener("click", () => {
+      clickAudio.play()
+    })
   },
   bgSound: function () {
     let bgSpace = new Audio(this.bgSpace);
+    bgSpace.looping = "true";
     let bgMusic = new Audio(this.bgMusic);
+    bgMusic.looping = "true";
     bgSpace.play();
     bgMusic.play();
   },
