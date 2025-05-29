@@ -58,6 +58,15 @@ class Player {
     col6.textContent = `Age: ${this.age}`;
     col62.textContent = `${this.job}`;
     const allegiance = DOC.create("div", "", "allegiance");
+    allegiance.addEventListener(
+      "click",
+      () => {
+        let audio = AUDIO.vaderAudio.cloneNode();
+        audio.volume = 0.9;
+        audio.play();
+      },
+      true
+    );
     allegiance.addEventListener("click", this.bonusShow.bind(this));
     subRow.add(col6, col62);
     row.add(subRow, allegiance);
@@ -79,17 +88,13 @@ class Player {
     else return this.lname;
   }
   bonusShow() {
-    DOC.get(".vader").classes("+vaderAnim", "-vaderBackAnim");
     let bg = ["vader1", "vader2", "vader3"];
-    DOC.get(".vader").setAttribute(
-      "style",
-      `background: url(vader/${
-        bg[Math.floor(Math.random() * bg.length)]
-      }.png), rgba(255,255,255,.7); background-position: left bottom; background-size: contain; background-repeat: no-repeat;backdrop-filter: blur(5px);`
-    );
-    DOC.get(
-      "#vaderTextBox"
-    ).innerHTML = `<h2>${this.fname} ${this.thisL}</h2>${this.bonus}<div class="imgSkew"><img src="${this.img}" alt="${this.fname} ${this.lname}"></div>`;
+    DOC.get(".vader").classes(`+${bg[Math.floor(Math.random() * bg.length)]}`);
+    DOC.get("#vaderTextBox h2").textContent = `${this.fname} ${this.thisL}`;
+    DOC.get("#vaderTextBox span").innerHTML = this.bonus;
+    if (DOC.get(".imgSkew img").src != this.img)
+      DOC.get(".imgSkew img").src = this.img;
+    DOC.get(".vader").classes("+vaderAnim", "-vaderBackAnim");
   }
 }
 const Team = {
@@ -214,7 +219,9 @@ const PAGEOPS = {
       }, 1000);
     }, 1000);
   },
-  closeVader: () => DOC.get(".vader").classes("+vaderBackAnim", "-vaderAnim"),
+  closeVader: () => {
+    DOC.get(".vader").classes("+vaderBackAnim", "-vaderAnim");
+  },
 };
 const CAROUSEL = {
   text: [],
@@ -326,22 +333,34 @@ const SEARCH = {
   },
 };
 const AUDIO = {
+  clickAudio: new Audio("CLICKBLASTER.wav"),
+  vaderAudio: new Audio("LIGHTSABER.mp3"),
   init: function () {
-    this.clickAudio = "CLICKBLAST.wav";
     this.bgMusic = "MUSIC.wav";
     this.bgSpace = "DEEPSPACE.wav";
+    this.vaderSound = "LIGHTSABER.mp3";
     this.bgSound();
+    DOC.get(".vader").addEventListener(
+      "click",
+      () => {
+        let audio = AUDIO.vaderAudio.cloneNode();
+        audio.volume = 0.2;
+        audio.play();
+      },
+      true
+    );
     window.addEventListener("click", () => {
-    let clickAudio = new Audio("CLICKBLASTER.wav");
-      clickAudio.volume = 0.2;
-      clickAudio.play()
-    })
+      let audio = AUDIO.clickAudio.cloneNode();
+      audio.volume = 0.2;
+      audio.play();
+    });
   },
   bgSound: function () {
     let bgSpace = new Audio(this.bgSpace);
     bgSpace.looping = "true";
     let bgMusic = new Audio(this.bgMusic);
     bgMusic.looping = "true";
+    bgMusic.volume = 0.8;
     bgSpace.play();
     bgMusic.play();
   },

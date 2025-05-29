@@ -8,6 +8,8 @@ html {
     width: 100%;
     height: 100%;
     padding: 0 !important;
+    cursor: url("falcon.png"), auto;
+    --pointer: url("lightsaber.png"), auto;
     header {
       height: var(--headerHeight);
       width: 100%;
@@ -31,7 +33,7 @@ html {
         align-items: center;
         user-select: none;
         li {
-          cursor: pointer;
+          cursor: var(--pointer);
           margin: 0 25px;
         }
       }
@@ -71,7 +73,7 @@ html {
           opacity: 0;
           #go {
             user-select: none;
-            cursor: pointer;
+            cursor: var(--pointer);
             width: 100px;
             height: 100px;
             border: 3px solid rgb(255, 106, 0);
@@ -204,7 +206,7 @@ html {
             padding: 0px 10px;
             height: 100%;
             width: 50%;
-            cursor: pointer;
+            cursor: var(--pointer);
             transition: 0.2s;
             display: flex;
             justify-content: center;
@@ -228,7 +230,7 @@ html {
           font-size: 20px;
           border-top: 1px solid var(--blue);
           div {
-            cursor: pointer;
+            cursor: var(--pointer);
             background: orange;
             border: 3px solid rgb(255, 106, 0);
             border-radius: 10px;
@@ -460,7 +462,7 @@ html {
                   );
                 }
                 .allegiance {
-                  cursor: pointer;
+                  cursor: var(--pointer);
                   background: transparent;
                   border: none !important;
                   box-shadow: none;
@@ -704,7 +706,7 @@ html {
             margin-top: 5px;
             .tab {
               overflow: clip;
-              cursor: pointer;
+              cursor: var(--pointer);
               padding: 0 5px;
               color: white;
               position: relative;
@@ -744,7 +746,7 @@ html {
       height: 100%;
       z-index: 10;
       left: -100%;
-      cursor: pointer;
+      cursor: var(--pointer);
       .x {
         width: 50px;
         height: 50px;
@@ -753,7 +755,7 @@ html {
         position: absolute;
         top: 0;
         right: 0;
-        cursor: pointer;
+        cursor: var(--pointer);
         transition: 0.2s;
         svg {
           transition: 0.2s;
@@ -1149,4 +1151,25 @@ html {
     left: -100%;
     opacity: 0;
   }
+}
+.vader1 {
+  background: url("vader/vader1.png"), rgba(255, 255, 255, 0.7);
+  background-position: left bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
+}
+.vader2 {
+  background: url("vader/vader2.png"), rgba(255, 255, 255, 0.7);
+  background-position: left bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
+}
+.vader3 {
+  background: url("vader/vader3.png"), rgba(255, 255, 255, 0.7);
+  background-position: left bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
 }
