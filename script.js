@@ -333,6 +333,7 @@ const AUDIO = {
     this.bgSound();
     window.addEventListener("click", () => {
     let clickAudio = new Audio("CLICKBLASTER.wav");
+      clickAudio.volume = 0.2;
       clickAudio.play()
     })
   },
