@@ -139,6 +139,8 @@ const PAGEOPS = {
     };
     DOC.get("#go").addEventListener("click", this.moveNext.bind(this));
     DOC.get(".x").addEventListener("click", this.closeVader);
+    DOC.get(".vader").addEventListener("click", this.closeVader);
+
     setTimeout(() => {
       DOC.get(".hero").classes("+pulsing", "-bgZoom");
       DOC.getALL("header ul li").forEach((e) => {
@@ -158,6 +160,7 @@ const PAGEOPS = {
   },
   moveNext: function () {
     this.page = 2;
+    AUDIO.init();
     DOC.get(".hero-button").classes("-gradfade", "+fadeOut");
     setTimeout(() => DOC.get(".hero-button").classes("+d-none"), 1000);
     setTimeout(() => {
@@ -320,6 +323,20 @@ const SEARCH = {
     Team.grid.add(Team.control);
     this.results.forEach((r) => r.render(Team.grid));
     this.e.focus();
+  },
+};
+const AUDIO = {
+  init: function () {
+    this.clickAudio = "CLICKBLAST.wav";
+    this.bgMusic = "MUSIC.wav";
+    this.bgSpace = "DEEPSPACE.wav";
+    this.bgSound();
+  },
+  bgSound: function () {
+    let bgSpace = new Audio(this.bgSpace);
+    let bgMusic = new Audio(this.bgMusic);
+    bgSpace.play();
+    bgMusic.play();
   },
 };
 PAGEOPS.setup();

@@ -290,6 +290,7 @@ html {
           -ms-overflow-style: none;
           scrollbar-width: none;
           font-size: 18px;
+          text-align: justify;
           h2 {
             font-family: "Aero", sans-serif;
             padding-top: 10px;
@@ -743,6 +744,7 @@ html {
       height: 100%;
       z-index: 10;
       left: -100%;
+      cursor: pointer;
       .x {
         width: 50px;
         height: 50px;
