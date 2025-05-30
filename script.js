@@ -40,7 +40,9 @@ class Player {
       "col-12",
       "col-sm-6",
       "col-md-4",
-      "col-lg-3"
+      "col-lg-3",
+      "col-xl-2",
+      "col-xxl-1"
     );
     const content = DOC.create("div");
     const img = DOC.create("img");
@@ -58,7 +60,7 @@ class Player {
     col6.textContent = `Age: ${this.age}`;
     col62.textContent = `${this.job}`;
     const allegiance = DOC.create("div", "", "allegiance");
-    allegiance.addEventListener("click", AUDIO.vader, true);
+    allegiance.addEventListener("click", AUDIO.vader.bind(AUDIO), true);
     allegiance.addEventListener("click", this.bonusShow.bind(this));
     subRow.add(col6, col62);
     row.add(subRow, allegiance);
@@ -163,7 +165,7 @@ const PAGEOPS = {
     DOC.get(".hero-button").classes("-gradfade", "+fadeOut");
     setTimeout(() => DOC.get(".hero-button").classes("+d-none"), 1000);
     setTimeout(() => {
-      DOC.get(".hero").classes("-pulsing", "+moveNavDown");
+      DOC.get(".hero").classes("-pulsing", "-bgZoom", "+moveNavDown");
       [DOC.get("header"), DOC.get("footer"), CAROUSEL.body].forEach((e) =>
         e.classes("-d-none")
       );
@@ -328,6 +330,7 @@ const AUDIO = {
   vaderAudio: new Audio("LIGHTSABER.mp3"),
   bgSpace: new Audio("DEEPSPACE.wav"),
   bgMusic: new Audio("MUSIC.wav"),
+  toggler: true,
   init: function () {
     this.bgSpace.looping = "true";
     this.bgMusic.looping = "true";
@@ -337,17 +340,39 @@ const AUDIO = {
     this.bgMusic.play();
     DOC.get(".vader").addEventListener("click", this.vader.bind(this), true);
     window.addEventListener("click", this.clickSound.bind(this));
+    DOC.get("#on").addEventListener("click", () => {
+      AUDIO.toggle(false);
+    });
+    DOC.get("#off").addEventListener("click", () => {
+      AUDIO.toggle(true);
+    });
   },
-  toggle: function () {},
+  toggle: function (bool) {
+    if (bool == false) {
+      [this.bgSpace, this.bgMusic].forEach((m) => m.pause());
+      DOC.get("#on").classes("+d-none");
+      DOC.get("#off").classes("-d-none");
+      this.toggler = false;
+    } else if (bool == true) {
+      [this.bgSpace, this.bgMusic].forEach((m) => m.play());
+      DOC.get("#off").classes("+d-none");
+      DOC.get("#on").classes("-d-none");
+      this.toggler = true;
+    }
+  },
   clickSound: function () {
-    let audio = this.clickAudio.cloneNode();
-    audio.volume = 0.2;
-    audio.play();
+    if (this.toggler == true) {
+      let audio = this.clickAudio.cloneNode();
+      audio.volume = 0.2;
+      audio.play();
+    }
   },
   vader: function () {
-    let audio = this.vaderAudio.cloneNode();
-    audio.volume = 0.2;
-    audio.play();
+    if (this.toggler == true) {
+      let audio = this.vaderAudio.cloneNode();
+      audio.volume = 0.2;
+      audio.play();
+    }
   },
 };
 PAGEOPS.setup();
