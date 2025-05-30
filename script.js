@@ -148,10 +148,12 @@ const PAGEOPS = {
 
     setTimeout(() => {
       DOC.get(".hero").classes("+pulsing", "-bgZoom");
-      DOC.getALL("header ul li").forEach((e) => {
-        let n = e.textContent.toLowerCase();
-        e.addEventListener("click", PAGEOPS[n].bind(PAGEOPS));
-      });
+      DOC.getALL("header ul li")
+        .slice(0, 2)
+        .forEach((e) => {
+          let n = e.textContent.toLowerCase();
+          e.addEventListener("click", PAGEOPS[n].bind(PAGEOPS));
+        });
       DOC.get("#carouselRosterBtn").addEventListener(
         "click",
         PAGEOPS.roster.bind(this)
@@ -234,13 +236,10 @@ const CAROUSEL = {
       .then((data) => {
         data.split("@").forEach((e) => this.text.push(e.split(":")));
         this.text.splice(0, 1);
-        const div = DOC.create("div", `cDIV`, "carousel-div");
-        let mH = DOC.create("p", "r", "carousel-heading");
-        let lH = DOC.create("p", "l", "carousel-heading");
+        let mH = DOC.get("p#r.carousel-heading");
+        let lH = DOC.get("p#l.carousel-heading");
         mH.textContent = this.text[0][0];
         lH.textContent = this.text[0][1];
-        div.add(mH, lH);
-        this.e.add(div);
         setInterval(
           () => {
             let num = Math.floor(Math.random() * this.text.length);
