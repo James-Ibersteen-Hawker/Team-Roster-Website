@@ -35,7 +35,7 @@ class Player {
   render(loc) {
     const card = DOC.create(
       "div",
-      "",
+      `${this.fname}${this.lname}`,
       `${this.ally[0]}`,
       "col-12",
       "col-sm-6",
@@ -58,15 +58,7 @@ class Player {
     col6.textContent = `Age: ${this.age}`;
     col62.textContent = `${this.job}`;
     const allegiance = DOC.create("div", "", "allegiance");
-    allegiance.addEventListener(
-      "click",
-      () => {
-        let audio = AUDIO.vaderAudio.cloneNode();
-        audio.volume = 0.9;
-        audio.play();
-      },
-      true
-    );
+    allegiance.addEventListener("click", AUDIO.vader, true);
     allegiance.addEventListener("click", this.bonusShow.bind(this));
     subRow.add(col6, col62);
     row.add(subRow, allegiance);
@@ -334,34 +326,28 @@ const SEARCH = {
 const AUDIO = {
   clickAudio: new Audio("CLICKBLASTER.wav"),
   vaderAudio: new Audio("LIGHTSABER.mp3"),
+  bgSpace: new Audio("DEEPSPACE.wav"),
+  bgMusic: new Audio("MUSIC.wav"),
   init: function () {
-    this.bgMusic = "MUSIC.wav";
-    this.bgSpace = "DEEPSPACE.wav";
-    this.vaderSound = "LIGHTSABER.mp3";
-    this.bgSound();
-    DOC.get(".vader").addEventListener(
-      "click",
-      () => {
-        let audio = AUDIO.vaderAudio.cloneNode();
-        audio.volume = 0.2;
-        audio.play();
-      },
-      true
-    );
-    window.addEventListener("click", () => {
-      let audio = AUDIO.clickAudio.cloneNode();
-      audio.volume = 0.2;
-      audio.play();
-    });
+    this.bgSpace.looping = "true";
+    this.bgMusic.looping = "true";
+    this.bgMusic.volume = 0.8;
+    this.bgSpace.volume = 1;
+    this.bgSpace.play();
+    this.bgMusic.play();
+    DOC.get(".vader").addEventListener("click", this.vader.bind(this), true);
+    window.addEventListener("click", this.clickSound.bind(this));
   },
-  bgSound: function () {
-    let bgSpace = new Audio(this.bgSpace);
-    bgSpace.looping = "true";
-    let bgMusic = new Audio(this.bgMusic);
-    bgMusic.looping = "true";
-    bgMusic.volume = 0.8;
-    bgSpace.play();
-    bgMusic.play();
+  toggle: function () {},
+  clickSound: function () {
+    let audio = this.clickAudio.cloneNode();
+    audio.volume = 0.2;
+    audio.play();
+  },
+  vader: function () {
+    let audio = this.vaderAudio.cloneNode();
+    audio.volume = 0.2;
+    audio.play();
   },
 };
 PAGEOPS.setup();
