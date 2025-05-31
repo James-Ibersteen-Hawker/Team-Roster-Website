@@ -41,8 +41,6 @@ class Player {
       "col-sm-6",
       "col-md-4",
       "col-lg-3",
-      "col-xl-2",
-      "col-xxl-1"
     );
     const content = DOC.create("div");
     const img = DOC.create("img");
@@ -83,7 +81,7 @@ class Player {
   }
   bonusShow() {
     let bg = ["vader1", "vader2", "vader3"];
-    DOC.get(".vader").classes(`+${bg[Math.floor(Math.random() * bg.length)]}`);
+    DOC.get(".vader").classes("-vader1","-vader2","-vader2",`+${bg[Math.floor(Math.random() * bg.length)]}`);
     DOC.get("#vaderTextBox h2").textContent = `${this.fname} ${this.thisL}`;
     DOC.get("#vaderTextBox span").innerHTML = this.bonus;
     if (DOC.get(".imgSkew img").src != this.img)
