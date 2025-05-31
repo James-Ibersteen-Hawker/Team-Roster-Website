@@ -60,7 +60,7 @@ class Player {
     col6.textContent = `Age: ${this.age}`;
     col62.textContent = `${this.job}`;
     const allegiance = DOC.create("div", "", "allegiance");
-    allegiance.addEventListener("click", AUDIO.vader.bind(AUDIO), true);
+    allegiance.addEventListener("click", () => AUDIO.SFX("vader"), true);
     allegiance.addEventListener("click", this.bonusShow.bind(this));
     subRow.add(col6, col62);
     row.add(subRow, allegiance);
@@ -139,18 +139,21 @@ const PAGEOPS = {
     DOC.get("#go").addEventListener("click", this.moveNext.bind(this));
     DOC.get(".x").addEventListener("click", this.closeVader);
     DOC.get(".vader").addEventListener("click", this.closeVader);
-
     setTimeout(() => {
       DOC.get(".hero").classes("+pulsing", "-bgZoom");
       DOC.getALL("header ul li")
         .slice(0, 2)
         .forEach((e) => {
           let n = e.textContent.toLowerCase();
+          e.addEventListener("click", () => AUDIO.SFX("ignition"));
           e.addEventListener("click", PAGEOPS[n].bind(PAGEOPS));
         });
       DOC.get("#carouselRosterBtn").addEventListener(
         "click",
         PAGEOPS.roster.bind(this)
+      );
+      DOC.get("#carouselRosterBtn").addEventListener("click", () =>
+        AUDIO.SFX("ignition")
       );
       DOC.getALL(".carousel-header span").forEach((e, i) => {
         e.addEventListener("click", () => this.carouselTabs(i));
@@ -330,6 +333,7 @@ const AUDIO = {
   vaderAudio: new Audio("LIGHTSABER.mp3"),
   bgSpace: new Audio("DEEPSPACE.wav"),
   bgMusic: new Audio("MUSIC.wav"),
+  ignition: new Audio("IGNITION.wav"),
   toggler: true,
   init: function () {
     this.bgSpace.looping = "true";
@@ -338,8 +342,8 @@ const AUDIO = {
     this.bgSpace.volume = 1;
     this.bgSpace.play();
     this.bgMusic.play();
-    DOC.get(".vader").addEventListener("click", this.vader.bind(this), true);
-    window.addEventListener("click", this.clickSound.bind(this));
+    DOC.get(".vader").addEventListener("click", () => this.SFX("vader"), true);
+    window.addEventListener("click", () => this.SFX("click"));
     DOC.get("#on").addEventListener("click", () => {
       AUDIO.toggle(false);
     });
@@ -360,21 +364,26 @@ const AUDIO = {
       this.toggler = true;
     }
   },
-  clickSound: function () {
+  SFX: function (arg) {
     if (this.toggler == true) {
-      let audio = this.clickAudio.cloneNode();
-      audio.volume = 0.2;
-      audio.play();
-    }
-  },
-  vader: function () {
-    if (this.toggler == true) {
-      let audio = this.vaderAudio.cloneNode();
-      audio.volume = 0.2;
+      let audio;
+      switch (arg) {
+        case "click":
+          audio = this.clickAudio.cloneNode();
+          break;
+        case "vader":
+          audio = this.vaderAudio.cloneNode();
+          break;
+        case "ignition":
+          audio = this.ignition.cloneNode();
+          break;
+      }
+      audio.volume = 0.3;
+      if (arg == "click") audio.volume = 0.2;
       audio.play();
     }
   },
 };
 PAGEOPS.setup();
 
-//370
+//390
