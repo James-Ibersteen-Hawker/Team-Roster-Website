@@ -8,7 +8,6 @@ html {
     width: 100%;
     height: 100%;
     padding: 0 !important;
-    cursor: crosshair;
     --pointer: pointer;
     header {
       height: var(--headerHeight);
@@ -35,6 +34,8 @@ html {
         li {
           cursor: var(--pointer);
           margin: 0 25px;
+        }
+        li:hover {
         }
         #soundIcon {
           justify-self: flex-end;
@@ -360,6 +361,7 @@ html {
             width: 100%;
             box-shadow: 0px 0px 3px black inset;
             position: relative;
+            overflow: clip;
             img {
               border-top-right-radius: 5px;
               border-top-left-radius: 5px;
@@ -369,25 +371,6 @@ html {
               object-position: top;
               overflow: clip;
               position: relative;
-            }
-            .imgOverlay {
-              color: black !important;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 50%;
-              font-weight: 800;
-              font-size: 20px;
-              font-style: italic;
-              background: rgba(224, 224, 224, 0.781);
-              opacity: 0;
-              transition: 0.3s;
-              padding: 10px;
-              border-radius: 5px;
             }
             div {
               border-top-right-radius: 0;
@@ -402,9 +385,12 @@ html {
                 margin: 3px;
                 position: relative;
                 height: 25%;
+                width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                overflow-wrap: normal;
+                white-space: nowrap;
               }
               h2::after {
                 content: "";
@@ -456,6 +442,8 @@ html {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    overflow-wrap: normal;
+                    white-space: nowrap;
                   }
                   .infodiv:nth-child(1) {
                     justify-content: end;
@@ -509,8 +497,12 @@ html {
           transform: scale(1.01);
           z-index: 2;
           div {
-            .imgOverlay {
-              opacity: 1;
+            img {
+              transform-origin: bottom center;
+              animation-name: imgPulse;
+              animation-duration: 5s;
+              animation-timing-function: linear;
+              animation-iteration-count: infinite;
             }
           }
         }
@@ -795,6 +787,8 @@ html {
         font-size: 20px;
         width: 40%;
         min-height: 120px;
+        max-height: 90vh;
+        overflow-y: auto;
         background: rgba(203, 203, 203, 0.558);
         display: flex;
         justify-content: center;
@@ -809,6 +803,8 @@ html {
         border: 3px solid rgb(216, 216, 216);
         filter: drop-shadow(0px 0px 10px var(--blue));
         backdrop-filter: blur(5px);
+        -ms-overflow-style: none;
+        scrollbar-width: none;
         h2 {
           font-family: "Aero", sans-serif;
           text-align: center;
@@ -851,6 +847,9 @@ html {
           }
         }
       }
+      .textVader::-webkit-scrollbar {
+        display: none;
+      }
       .arrow {
         position: absolute;
         top: 57px;
@@ -884,11 +883,13 @@ html {
       background: linear-gradient(to top, rgb(255, 208, 0), white);
       background-clip: text;
       font-family: "Aero", sans-serif;
-      font-size: 32px;
+      font-size: 20px;
       display: flex;
       justify-content: end;
+      align-items: center;
       z-index: 3;
       padding: 25px;
+      padding-top: 36px;
       white-space: nowrap;
       .horizRuleLeft {
         height: 1px;
@@ -1191,4 +1192,15 @@ html {
   background-size: contain;
   background-repeat: no-repeat;
   backdrop-filter: blur(5px);
+}
+@keyframes imgPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

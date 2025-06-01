@@ -40,13 +40,12 @@ class Player {
       "col-12",
       "col-sm-6",
       "col-md-4",
-      "col-lg-3"
+      "col-lg-3",
+      "col-xxl-2"
     );
     const content = DOC.create("div");
     const img = DOC.create("img");
     img.src = this.img;
-    const imgOverlay = DOC.create("span", "", "imgOverlay");
-    imgOverlay.textContent = "Click the logo to find out more";
     const txt = DOC.create("div", "", "itemText");
     const h2 = DOC.create("h2");
     h2.textContent = `${this.fname} ${this.thisL}`;
@@ -63,7 +62,7 @@ class Player {
     subRow.add(col6, col62);
     row.add(subRow, allegiance);
     txt.add(h2, row);
-    content.add(img, imgOverlay, txt);
+    content.add(img, txt);
     card.setAttribute("data-name", `c${this.fname}&${this.lname}`);
     card.setAttribute("data-job", this.job);
     card.add(content);
