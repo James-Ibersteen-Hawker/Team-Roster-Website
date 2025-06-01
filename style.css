@@ -354,7 +354,7 @@ html {
           aspect-ratio: 1/1 !important;
           padding: 5px;
           font-family: "Raleway", sans-serif;
-          transition: 0.1s;
+          transition: 0.2s;
           div {
             border-radius: 10px;
             height: 100%;
@@ -371,6 +371,20 @@ html {
               object-position: top;
               overflow: clip;
               position: relative;
+            }
+            .imgOverlay {
+              position: absolute;
+              height: 50%;
+              width: 100%;
+              background: transparent;
+              border-top-left-radius: 5px;
+              border-top-left-radius: 5px;
+              box-shadow: 0px 0px 20px var(--blue) inset;
+              display: block;
+              top: 0;
+              left: 0;
+              opacity: 0;
+              transition: 1s;
             }
             div {
               border-top-right-radius: 0;
@@ -503,6 +517,9 @@ html {
               animation-duration: 5s;
               animation-timing-function: linear;
               animation-iteration-count: infinite;
+            }
+            .imgOverlay {
+              opacity: 1;
             }
           }
         }
