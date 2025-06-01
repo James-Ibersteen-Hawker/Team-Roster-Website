@@ -40,7 +40,7 @@ class Player {
       "col-12",
       "col-sm-6",
       "col-md-4",
-      "col-lg-3",
+      "col-lg-3"
     );
     const content = DOC.create("div");
     const img = DOC.create("img");
@@ -81,7 +81,12 @@ class Player {
   }
   bonusShow() {
     let bg = ["vader1", "vader2", "vader3"];
-    DOC.get(".vader").classes("-vader1","-vader2","-vader2",`+${bg[Math.floor(Math.random() * bg.length)]}`);
+    DOC.get(".vader").classes(
+      "-vader1",
+      "-vader2",
+      "-vader2",
+      `+${bg[Math.floor(Math.random() * bg.length)]}`
+    );
     DOC.get("#vaderTextBox h2").textContent = `${this.fname} ${this.thisL}`;
     DOC.get("#vaderTextBox span").innerHTML = this.bonus;
     if (DOC.get(".imgSkew img").src != this.img)
@@ -184,8 +189,11 @@ const PAGEOPS = {
     TABS.reset();
     setTimeout(() => CAROUSEL.body.classes("-fadeOut", "+d-none"), 1000);
     setTimeout(() => {
-      Team.grid.classes("+fadeIn", "-d-none");
+      Team.grid.innerHTML = "";
+      Team.grid.append(Team.control);
       if (!Team.set) Team.setup();
+      else Team.players.forEach((p) => p.render(Team.grid));
+      Team.grid.classes("+fadeIn", "-d-none");
       setTimeout(() => Team.grid.classes("-fadeIn"), 1000);
     }, 2500);
   },
@@ -334,8 +342,8 @@ const AUDIO = {
   ignition: new Audio("IGNITION.wav"),
   toggler: true,
   init: function () {
-    this.bgSpace.looping = "true";
-    this.bgMusic.looping = "true";
+    this.bgSpace.loop = true;
+    this.bgMusic.loop = true;
     this.bgMusic.volume = 0.8;
     this.bgSpace.volume = 1;
     this.bgSpace.play();
